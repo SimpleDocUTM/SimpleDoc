@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.SimpleDocVenv
+pip-selfcheck.json
