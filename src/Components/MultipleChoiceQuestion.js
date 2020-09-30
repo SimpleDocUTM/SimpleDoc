@@ -6,7 +6,7 @@ import QuizOptions from './MultipleChoiceOptions';
 
 
 
-class Quiz extends React.Component{
+class MultipleChoiceQuestion extends React.Component{
     render(){
         // this object will query the id to get the question text 
         return (
@@ -28,4 +28,4 @@ class Quiz extends React.Component{
     
 
 
-export default Quiz;
+export default MultipleChoiceQuestion;

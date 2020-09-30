@@ -4,7 +4,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 
-class QuizOptions extends React.Component{
+class MultipleChoiceOptions extends React.Component{
     render(){
         return (
             
@@ -22,4 +22,4 @@ class QuizOptions extends React.Component{
     }
 }
 
-export default QuizOptions;
+export default MultipleChoiceOptions;
