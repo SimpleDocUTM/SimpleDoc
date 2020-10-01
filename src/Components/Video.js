@@ -10,7 +10,7 @@ class Video extends React.Component{
         const mystyle = {
             color: "white",
             backgroundColor: "#1297df",
-            padding: "20px",
+            padding: "0px",
             width: "600px",
             height: "35px",
             fontFamily: "Courier New",
@@ -20,7 +20,7 @@ class Video extends React.Component{
         return (
             <div>
                 <h2 style={mystyle}>Video: {this.props.title}</h2>
-                <iframe style={{display: 'flex', padding: '20px', justifyContent:'center', alignItems:'center'}} width="560" height="315" src={embedUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title={'video'}></iframe>
+                <iframe  width="560" height="315" src={embedUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title={'video'}></iframe>
             </div>
         );
     }
