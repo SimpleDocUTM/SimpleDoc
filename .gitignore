@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+/SimpleDocVenv
 # production
 /build
 
