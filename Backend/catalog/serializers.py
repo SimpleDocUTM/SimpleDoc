@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Quiz, QuizQuestion, QuizOption
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission
+
 
 class QuizListSerializer(serializers.ModelSerializer):
     question_count = serializers.SerializerMethodField()
@@ -33,3 +34,15 @@ class QuizDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
         fields = '__all__'
+
+
+class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
+    is_correct = serializers.SerializerMethodField()
+
+    class Meta:
+            model = QuizOptionSubmission
+            fields = '__all__'
+            read_only_fields = ['is_correct']
+
+    def get_is_correct(self, obj):
+        return obj.option.is_correct

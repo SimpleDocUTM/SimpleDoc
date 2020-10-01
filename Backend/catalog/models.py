@@ -32,4 +32,12 @@ class QuizOption(models.Model):
         return self.text
 
 
+class QuizOptionSubmission(models.Model):
+    question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    option = models.ForeignKey(QuizOption, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.question.question
+
+
 
