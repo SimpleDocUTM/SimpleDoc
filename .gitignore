@@ -34,5 +34,9 @@ pyvenv.cfg
 .venv
 pip-selfcheck.json
 .Backend.catalog.migrations
-.Backend.catalog
-
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
+**/__pycache__/**
+!**/__pycache__
+!**/__pycache__/__init__.py
