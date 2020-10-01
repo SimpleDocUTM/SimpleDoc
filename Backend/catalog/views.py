@@ -1,16 +1,15 @@
-from rest_framework import viewsets
+from rest_framework import generics
+
+
 from .models import Quiz, QuizOption, QuizQuestion
-from .serializers import QuizSerializer, QuizOptionSerializer, QuizQuestionSerializer
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer
 
-# Create your views here.
-class QuizViewSet(viewsets.ModelViewSet):
+
+class QuizListAPI(generics.ListAPIView):
     queryset = Quiz.objects.all()
-    serializer_class = QuizSerializer
+    serializer_class = QuizListSerializer
 
-class QuizOptionViewSet(viewsets.ModelViewSet):
-    queryset = QuizOption.objects.all()
-    serializer_class = QuizOptionSerializer
 
-class QuizQuestionViewSet(viewsets.ModelViewSet):
-    queryset = QuizQuestion.objects.all()
-    serializer_class = QuizQuestionSerializer
+class QuizDetailAPI(generics.RetrieveAPIView):
+    queryset = Quiz.objects.all()
+    serializer_class = QuizDetailSerializer
