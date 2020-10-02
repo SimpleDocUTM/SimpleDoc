@@ -1,5 +1,5 @@
 from django.db import models
-
+from PIL import Image #For user avatar
 
 class QuizQuestion(models.Model):
     question = models.CharField(max_length=255)
@@ -27,4 +27,28 @@ class Quiz(models.Model):
         return self.title
 
 
+class User(models.Model):
+    reputation = models.IntegerField(default=0);
+    user_id = models.CharField(maxLength=10);
+    avatar = models.ImageField(blank=true, null=true)
+    is_admin = models.BooleanField()
 
+    def login():
+        #returns true if user is logged in through shibboleth
+	return
+
+    def contribute():
+        #Creates a concept and attributes it to the user using user_id
+	return
+
+    def increase_rep():
+	#Increase the user's reputation
+	return
+
+    def decrease_rep():
+	#decrease the user's reputation
+	return
+
+    def make_admin():
+	#make the user an administrator
+	return
