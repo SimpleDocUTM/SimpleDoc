@@ -39,5 +39,31 @@ class QuizOptionSubmission(models.Model):
     def __str__(self):
         return self.question.question
 
+class Concept(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    description = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['created']
+
+    def __str__(self):
+        return self.description
+
+class Documentation(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=255) #the name of the concept
+    description = models.TextField(max_length=255)
+    difficulty = models.IntegerField(default=0)
+#    parent = models.ForeignKey(Concept, on_delete=models.CASCADE)
+    contributor = models.CharField(max_length=255) #User object
+    concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
+    rating = models.FloatField(default=0)
+
+    class Meta:
+        ordering = ['created']
+
+    def __str__(self):
+        return self.title
+
 
 
