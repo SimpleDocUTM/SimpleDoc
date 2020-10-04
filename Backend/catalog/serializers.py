@@ -54,4 +54,3 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__' #These are the different fields that we want to be serialized. Typing '__all__' implies we want to serialize them all
     
 
-

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, User
 # Register your models here.
 
 admin.site.register(Quiz)
