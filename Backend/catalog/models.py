@@ -40,7 +40,7 @@ class QuizOptionSubmission(models.Model):
         return self.question.question
 
 
-class User(models.Model):
+class User(models.User):
     reputation = models.IntegerField(default=0)
     user_id = models.CharField(max_length=10, primary_key = True)
     logged_In = models.BooleanField()
