@@ -42,32 +42,10 @@ class QuizOptionSubmission(models.Model):
 
 class User(models.Model):
     reputation = models.IntegerField(default=0)
-    user_id = models.CharField(maxLength=10)
-    # avatar = models.ImageField(blank=True, null=True)
+    user_id = models.CharField(max_length=10, primary_key = True)
     logged_In = models.BooleanField()
     is_admin = models.BooleanField()
+    # avatar = models.ImageField(blank=True, null=True)
 
-    def login(self):
-        #returns true if user is logged in through shibboleth
-        logged_In = True
-	    return
-
-    def contribute(self):
-        #Creates a concept and attributes it to the user using user_id
-	    return
-
-    def increase_rep(self):
-	#Increase the user's reputation
-	    return
-
-    def decrease_rep(self):
-	#decrease the user's reputation
-	    return
-
-    def make_admin(self):
-	#make the user an administrator
-	    return
-
-    def update_avatar(self):
-        #Update the avatar for the user.
-        return
+    def __str__(self):
+        return self.user_id
