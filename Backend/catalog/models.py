@@ -54,7 +54,6 @@ class Documentation(models.Model):
     title = models.CharField(max_length=255) #the name of the concept
     description = models.TextField(max_length=255)
     difficulty = models.IntegerField(default=0)
-#    parent = models.ForeignKey(Concept, on_delete=models.CASCADE)
     contributor = models.CharField(max_length=255) #User object
     concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
     rating = models.FloatField(default=0)

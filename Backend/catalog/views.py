@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.decorators import api_view
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -40,7 +39,7 @@ class QuizOptionSubmissionAPI(generics.UpdateAPIView):
                 {"message": "You must choose a valid option."},
                 status=status.HTTP_400_BAD_REQUEST)
 
-class DocumentationListAPI(generics.RetrieveAPIView):
+class DocumentationListAPI(generics.ListAPIView):
     queryset = Documentation.objects.all()
     serializer_class = DocumentationListSerializer
 
