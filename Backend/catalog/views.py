@@ -39,6 +39,6 @@ class QuizOptionSubmissionAPI(generics.UpdateAPIView):
                 {"message": "You must choose a valid option."},
                 status=status.HTTP_400_BAD_REQUEST)
 
-class UserGetInfoAPI(generics.RetrieveAPIView):
-    users = User.objects.all()
+class UserInfoAPI(generics.RetrieveAPIView):
+    queryset = User.objects.all()
     serializer = UserSerializer

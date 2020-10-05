@@ -1,5 +1,5 @@
 from django.db import models
-# from PIL import Image #For user avatar
+from django.contrib.auth import models as authmodels
 
 class Quiz(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -40,7 +40,7 @@ class QuizOptionSubmission(models.Model):
         return self.question.question
 
 
-class User(models.Model):
+class User(authmodels.User):
     reputation = models.IntegerField(default=0)
     user_id = models.CharField(max_length=10, primary_key = True)
     logged_In = models.BooleanField()
