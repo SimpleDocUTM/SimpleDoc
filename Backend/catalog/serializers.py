@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, User
+
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, Concept, User
 
 
 class QuizListSerializer(serializers.ModelSerializer):
@@ -54,3 +55,20 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__' #These are the different fields that we want to be serialized. Typing '__all__' implies we want to serialize them all
     
 
+class DocumentationListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Documentation
+        fields = ['id', 'title']
+
+class DocumentationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Documentation
+        fields = '__all__'
+
+class ConceptListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Concept
+        fields = '__all__'
