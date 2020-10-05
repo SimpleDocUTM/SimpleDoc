@@ -40,12 +40,11 @@ class QuizOptionSubmission(models.Model):
         return self.question.question
 
 
-class User(models.User):
+class User(models.Model):
     reputation = models.IntegerField(default=0)
     user_id = models.CharField(max_length=10, primary_key = True)
     logged_In = models.BooleanField()
     is_admin = models.BooleanField()
-    # avatar = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.user_id
