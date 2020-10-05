@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth import models as authmodels
 
 class Quiz(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -65,4 +65,11 @@ class Documentation(models.Model):
         return self.title
 
 
+class User(authmodels.User):
+    reputation = models.IntegerField(default=0)
+    user_id = models.CharField(max_length=10, primary_key = True)
+    logged_In = models.BooleanField()
+    is_admin = models.BooleanField()
 
+    def __str__(self):
+        return self.user_id
