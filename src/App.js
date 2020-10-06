@@ -5,6 +5,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from './Views/Login';
 import DocumentView from './Views/DocumentView'
+import QuizView from './Views/QuizView'
 
 class App extends React.Component{
   render(){
@@ -14,7 +15,7 @@ class App extends React.Component{
           <Switch>
             <Route exact path='/' component={Login}/>
             <Route exact path='/DocumentView' component={DocumentView}/>
-            
+            <Route exact path='/quiz' component={QuizView}/>
           </Switch>
         </BrowserRouter>
 
