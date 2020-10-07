@@ -2,8 +2,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission
-from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer
+
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, Concept, User
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, ConceptListSerializer
 
 
 class QuizListAPI(generics.ListAPIView):
@@ -38,3 +39,25 @@ class QuizOptionSubmissionAPI(generics.UpdateAPIView):
             return Response(
                 {"message": "You must choose a valid option."},
                 status=status.HTTP_400_BAD_REQUEST)
+
+class UserInfoAPI(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer = UserSerializer
+    
+class DocumentationListAPI(generics.ListAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationListSerializer
+
+
+class DocumentationAPI(generics.RetrieveAPIView):
+    queryset = Documentation.objects.all()
+
+    def get_request(self, request):
+
+        if request.method == 'GET':
+            serializer = DocumentationSerializer
+            return Response(serializer.data)
+        
+class ConceptListAPI(generics.ListAPIView):
+    queryset = Concept.objects.all()
+    serializer_class = ConceptListSerializer
