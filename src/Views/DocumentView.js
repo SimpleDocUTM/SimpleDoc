@@ -44,7 +44,7 @@ class DocumentView extends React.Component{
                 {/* fix code component */}
             
                 <Button variant="contained" color="primary" onClick={1} >Take a Quiz</Button>
-
+                
 
             </Container>
 

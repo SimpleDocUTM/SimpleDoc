@@ -5,7 +5,10 @@ import FormControl from '@material-ui/core/FormControl';
 
 
 class MultipleChoiceOptions extends React.Component{
+    
+    
     render(){
+        
         return (
             
             <FormControl component="fieldset">  
