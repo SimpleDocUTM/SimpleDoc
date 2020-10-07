@@ -1,28 +1,26 @@
-import React from 'react';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+import React from "react";
+import { Radio, FormControlLabel, FormControl } from "@material-ui/core";
+import PropTypes from "prop-types";
 
-
-class MultipleChoiceOptions extends React.Component{
-    
-    
-    render(){
-        
-        return (
-            
-            <FormControl component="fieldset">  
-            {
-                this.props.options.map(
-                    (option) =>(
-                    < FormControlLabel value={option} control={<Radio />} label={option} />
-                    )
-                )
-            }
-            </FormControl>
-                
-        );
-    }
+class MultipleChoiceOptions extends React.Component {
+  render() {
+    return (
+      <FormControl component="fieldset">
+        {this.props.options.map(({ id, text }) => (
+          <FormControlLabel
+            key={id}
+            value={id}
+            control={<Radio />}
+            label={text}
+          />
+        ))}
+      </FormControl>
+    );
+  }
 }
+
+MultipleChoiceOptions.propTypes = {
+  options: PropTypes.array,
+};
 
 export default MultipleChoiceOptions;
