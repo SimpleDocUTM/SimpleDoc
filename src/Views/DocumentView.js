@@ -10,6 +10,7 @@ class DocumentView extends React.Component{
 // https://youtu.be/KEEKn7Me-ms
     
     render(){
+        
         return(
             <div>
                 <ButtonAppBar /> 
@@ -36,15 +37,15 @@ class DocumentView extends React.Component{
                 <h3>
                     Code Example 1
                 </h3>
-                <CodeComponent text="// code example 1"/> 
+                <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python"/> 
                 <h3>
                     Code Example n
                 </h3>
-                <CodeComponent text="// code example n"/> 
-                {/* fix code component */}
+                <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python"/> 
+            
             
                 <Button variant="contained" color="primary" onClick={1} >Take a Quiz</Button>
-                
+
 
             </Container>
 
