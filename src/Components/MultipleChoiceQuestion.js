@@ -1,44 +1,59 @@
 import React from "react";
-import { Button, RadioGroup, FormLabel } from "@material-ui/core";
+import { Button, RadioGroup, FormLabel, FormControl } from "@material-ui/core";
 import QuizOptions from "./MultipleChoiceOptions";
 import PropTypes from "prop-types";
+
+import SimpleDocRest from "../api/SimpleDocRest";
 
 class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
     super(props);
 
     // Set default selected quiz option to nothing.
-    this.state = { selected: null };
+    this.state = { selected: undefined, isCorrect: undefined };
   }
 
   onOptionChange = (event, value) => {
-    this.setState({ selected: value });
+    console.log(event);
+    this.setState({ selected: parseInt(value) });
   };
 
-  onSubmit = (event, value) => {
-    console.log(value);
+  onSubmit = (event) => {
+    event.preventDefault();
+
+    SimpleDocRest.patch(`/quizzes/save-answer/`, {
+      question: this.props.questionId,
+      option: this.state.selected,
+    })
+      .then((result) => {
+        this.setState({ isCorrect: result.data.is_correct });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   render() {
     const { question, options } = this.props;
+    const { selected, isCorrect } = this.state;
     // this object will query the id to get the question text
     return (
-      <div>
+      <form onSubmit={this.onSubmit}>
         <FormLabel component="legend" color="primary">
           {question}
         </FormLabel>
         <RadioGroup
           aria-label={question}
-          value={parseInt(this.state.selected)}
+          value={parseInt(selected)}
           onChange={this.onOptionChange}
         >
-          <QuizOptions options={options} />
+          <QuizOptions options={options} isCorrect={isCorrect} />
           {/* the question id would need to be past down, so it can do its own query */}
         </RadioGroup>
-        <Button variant="contained" onClick={this.onSubmit}>
+        <Button variant="contained" type="submit">
           Submit
         </Button>
-      </div>
+      </form>
     );
   }
 }
