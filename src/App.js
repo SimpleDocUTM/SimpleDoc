@@ -7,21 +7,21 @@ import Login from './Views/Login';
 import DocumentView from './Views/DocumentView'
 import QuizView from './Views/QuizView'
 
-class App extends React.Component{
-  render(){
+class App extends React.Component {
+  render() {
     return (
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Login}/>
-            <Route exact path='/DocumentView' component={DocumentView}/>
-            <Route exact path='/quiz' component={QuizView}/>
+            <Route exact path='/' component={Login} />
+            <Route exact path='/DocumentView' component={DocumentView} />
+            <Route exact path='/quiz' component={QuizView} />
           </Switch>
         </BrowserRouter>
 
       </div>
     );
-      
+
   }
 
 }
