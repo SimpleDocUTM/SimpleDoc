@@ -64,6 +64,14 @@ class Documentation(models.Model):
     def __str__(self):
         return self.title
 
+class DocumentationContribution(models.Model):
+    conceptname = models.TextField(max_length=255)
+    documentname = models.TextField(max_length=255)
+    definition = models.TextField(max_length=255)
+    description = models.TextField(max_length=255)
+
+    def __str__(self):
+        return self.documentname
 
 class User(authmodels.User):
     reputation = models.IntegerField(default=0)

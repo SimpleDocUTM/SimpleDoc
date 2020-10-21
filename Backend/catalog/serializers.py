@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, Concept, User
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User
 
 
 class QuizListSerializer(serializers.ModelSerializer):
@@ -65,6 +65,12 @@ class DocumentationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Documentation
+        fields = '__all__'
+
+class DocumentationContributionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DocumentationContribution
         fields = '__all__'
 
 class ConceptListSerializer(serializers.ModelSerializer):
