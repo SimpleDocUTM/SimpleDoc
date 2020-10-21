@@ -14,6 +14,7 @@ urlpatterns = [
     path('documents/', DocumentationListAPI.as_view()),
     path('documents/<int:pk>/', DocumentationAPI.as_view()),
     path('documents/contribution/', DocumentationContributeAPI.as_view()),
-    path('concepts/<int:pk>/', ConceptListAPI.as_view())
+    path('concepts/<int:pk>/', ConceptListAPI.as_view()),
+    # path('concepts/', ConceptListAPI.as_view()),
 ]
 
