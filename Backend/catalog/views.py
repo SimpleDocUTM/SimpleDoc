@@ -3,8 +3,8 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User
-from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer, SuggestedDocumentationSerializer
 
 
 class QuizListAPI(generics.ListAPIView):
@@ -80,3 +80,7 @@ class DocumentationContributeAPI(generics.CreateAPIView):
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
     serializer_class = ConceptListSerializer
+
+class SuggestedDocumentationListAPI(generics.ListAPIView):
+	queryset = SuggestedDocumentation.objects.all()
+	serializer_class = SuggestedDocumentationSerializer 
