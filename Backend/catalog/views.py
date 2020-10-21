@@ -3,8 +3,8 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, Concept, User
-from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, ConceptListSerializer
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer
 
 
 class QuizListAPI(generics.ListAPIView):
@@ -57,6 +57,25 @@ class DocumentationAPI(generics.RetrieveAPIView):
         if request.method == 'GET':
             serializer = DocumentationSerializer
             return Response(serializer.data)
+
+class DocumentationContributeAPI(generics.CreateAPIView):
+    serializer_class = DocumentationContributionSerializer
+
+    def post(self, request, *args, **kwargs):
+            conceptname = request.data['conceptname']
+            documentname = request.data['documentname']
+            definition = request.data['definition']
+            description = request.data['description']
+
+            if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+                return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                obj = DocumentationContribution.objects.create(conceptname=conceptname, documentname=documentname, definition=definition, description=description)
+                obj.save()
+                #return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(self.get_serializer(obj).data)
+            
+
         
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
