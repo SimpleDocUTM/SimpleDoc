@@ -37,6 +37,12 @@ class QuizDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class QuizIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ['id']
+
+
 class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
     is_correct = serializers.SerializerMethodField()
 
@@ -63,7 +69,7 @@ class DocumentationListSerializer(serializers.ModelSerializer):
 
 
 class DocumentationSerializer(serializers.ModelSerializer):
-    quiz_set = QuizDetailSerializer(many=True)
+    # quiz = QuizIdSerializer(many=False, source='quiz_set')
 
     class Meta:
         model = Documentation
