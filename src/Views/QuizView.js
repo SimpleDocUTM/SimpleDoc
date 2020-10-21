@@ -14,6 +14,7 @@ class QuizView extends React.Component {
   fetchQuiz = async () => {
     SimpleDocRest.get(`/quizzes/1/`)
       .then((result) => {
+        console.log(result);
         this.setState({
           quizTitle: result.data.title,
           quizQuestions: result.data.quizquestion_set,
@@ -29,9 +30,10 @@ class QuizView extends React.Component {
   }
 
   render() {
-    const { quizQuestions, quizId } = this.state;
+    const { quizQuestions, quizId, quizTitle } = this.state;
     return (
       <div>
+        <h1>{quizTitle}</h1>
         {quizQuestions.map(({ question, quizoption_set, id }) => (
           <MultipleChoiceQuestion
             key={id}
