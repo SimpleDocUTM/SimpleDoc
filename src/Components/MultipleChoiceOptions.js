@@ -18,6 +18,7 @@ class MultipleChoiceOptions extends React.Component {
   render() {
     const { options } = this.props;
     const { isCorrect } = this.state;
+
     console.log(isCorrect);
 
     return (
