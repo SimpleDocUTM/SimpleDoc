@@ -3,9 +3,8 @@ from django.utils import timezone
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 
-
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User, QuizUser
-from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, QuizSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, QuizUser, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, QuizSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer, SuggestedDocumentationSerializer
 
 
 class UserInfoAPI(generics.RetrieveAPIView):
@@ -45,6 +44,20 @@ class DocumentationContributeAPI(generics.CreateAPIView):
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
     serializer_class = ConceptListSerializer
+    
+    def post(self, request, *args, **kwargs):
+        conceptname = request.data['conceptname']
+        documentname = request.data['documentname']
+        definition = request.data['definition']
+        description = request.data['description']
+
+        if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+            return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            obj = DocumentationContribution.objects.create(conceptname=conceptname, documentname=documentname, definition=definition, description=description)
+            obj.save()
+            #return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(self.get_serializer(obj).data)
 
 
 class QuizListAPI(generics.ListAPIView):
@@ -163,3 +176,14 @@ class QuizSubmissionAPI(generics.GenericAPIView):
         quiz_user.save()
 
         return Response(self.get_serializer(quiz).data)
+ 
+
+class ConceptListAPI(generics.ListAPIView):
+    queryset = Concept.objects.all()
+    serializer_class = ConceptListSerializer
+
+    
+class SuggestedDocumentationListAPI(generics.ListAPIView):
+	queryset = SuggestedDocumentation.objects.all()
+	serializer_class = SuggestedDocumentationSerializer 
+

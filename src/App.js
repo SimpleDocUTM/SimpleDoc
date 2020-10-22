@@ -18,6 +18,7 @@ class App extends React.Component {
             <Route exact path='/DocumentView' component={DocumentView} />
             <Route exact path='/quiz' component={QuizView} />
             <Route exact path='/ContributionPage' component={ContributionPage} />
+
           </Switch>
         </BrowserRouter>
 

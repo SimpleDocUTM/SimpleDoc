@@ -100,3 +100,12 @@ class QuizOptionSubmission(models.Model):
 
     def __str__(self):
         return self.question.question
+      
+
+class SuggestedDocumentation(models.Model):
+	user=models.ForeignKey(User, on_delete=models.CASCADE)
+	documentation=models.ForeignKey(Documentation, on_delete=models.CASCADE)
+	is_active = models.BooleanField()
+
+	def __str__(self):
+		return self.documenation_id
