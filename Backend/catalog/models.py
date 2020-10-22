@@ -64,6 +64,14 @@ class Documentation(models.Model):
     def __str__(self):
         return self.title
 
+class DocumentationContribution(models.Model):
+    conceptname = models.TextField(max_length=255)
+    documentname = models.TextField(max_length=255)
+    definition = models.TextField(max_length=255)
+    description = models.TextField(max_length=255)
+
+    def __str__(self):
+        return self.documentname
 
 class User(authmodels.User):
     reputation = models.IntegerField(default=0)
@@ -72,4 +80,13 @@ class User(authmodels.User):
     is_admin = models.BooleanField()
 
     def __str__(self):
-        return self.user_id
+       return self.user_id
+
+class SuggestedDocumentation(models.Model):
+	user=models.ForeignKey(User, on_delete=models.CASCADE)
+	documentation=models.ForeignKey(Documentation, on_delete=models.CASCADE)
+	is_active = models.BooleanField()
+
+	def __str__(self):
+		return self.documenation_id
+
