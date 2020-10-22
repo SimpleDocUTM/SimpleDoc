@@ -3,8 +3,8 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User
-from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer, SuggestedDocumentationSerializer
 
 
 class UserInfoAPI(generics.RetrieveAPIView):
@@ -20,12 +20,6 @@ class DocumentationListAPI(generics.ListAPIView):
 class DocumentationAPI(generics.RetrieveAPIView):
     queryset = Documentation.objects.all()
     serializer_class = DocumentationSerializer
-
-    # def get_request(self, request):
-
-    #     if request.method == 'GET':
-
-    #         return Response(serializer.data)
 
 
 class DocumentationContributeAPI(generics.CreateAPIView):
@@ -45,6 +39,11 @@ class DocumentationContributeAPI(generics.CreateAPIView):
             obj.save()
             # return Response(serializer.data, status=status.HTTP_201_CREATED)
             return Response(self.get_serializer(obj).data)
+
+          
+class SuggestedDocumentationListAPI(generics.ListAPIView):
+	queryset = SuggestedDocumentation.objects.all()
+	serializer_class = SuggestedDocumentationSerializer 
 
 
 class ConceptListAPI(generics.ListAPIView):
@@ -85,3 +84,4 @@ class QuizOptionSubmissionAPI(generics.UpdateAPIView):
             return Response(
                 {"message": "You must choose a valid option."},
                 status=status.HTTP_400_BAD_REQUEST)
+

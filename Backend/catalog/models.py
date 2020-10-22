@@ -88,4 +88,13 @@ class User(authmodels.User):
     is_admin = models.BooleanField()
 
     def __str__(self):
-        return self.user_id
+       return self.user_id
+
+class SuggestedDocumentation(models.Model):
+	user=models.ForeignKey(User, on_delete=models.CASCADE)
+	documentation=models.ForeignKey(Documentation, on_delete=models.CASCADE)
+	is_active = models.BooleanField()
+
+	def __str__(self):
+		return self.documenation_id
+
