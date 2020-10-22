@@ -12,7 +12,7 @@ class QuizView extends React.Component {
   }
 
   fetchQuiz = async () => {
-    SimpleDocRest.get(`/quizzes/1/`)
+    SimpleDocRest.get(`/quizzes/${this.state.quizId}/`)
       .then((result) => {
         console.log(result);
         this.setState({
@@ -30,7 +30,7 @@ class QuizView extends React.Component {
   }
 
   render() {
-    const { quizQuestions, quizId, quizTitle } = this.state;
+    const { quizQuestions, quizTitle } = this.state;
     return (
       <div>
         <h1>{quizTitle}</h1>
