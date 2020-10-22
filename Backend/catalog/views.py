@@ -75,7 +75,6 @@ class QuizDetailAPI(generics.RetrieveAPIView):
         quiz_id = kwargs['pk']
         quiz = get_object_or_404(Quiz, id=quiz_id)
 
-        print(self.request.user)
         # If a user is getting a quiz we want to create quiz user in the db.
         quiz_user, created = QuizUser.objects.get_or_create(
             user=self.request.user, quiz=quiz)
