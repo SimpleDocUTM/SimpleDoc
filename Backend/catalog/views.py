@@ -51,12 +51,8 @@ class DocumentationListAPI(generics.ListAPIView):
 
 class DocumentationAPI(generics.RetrieveAPIView):
     queryset = Documentation.objects.all()
+    serializer_class = DocumentationSerializer
 
-    def get_request(self, request):
-
-        if request.method == 'GET':
-            serializer = DocumentationSerializer
-            return Response(serializer.data)
 
 class DocumentationContributeAPI(generics.CreateAPIView):
     serializer_class = DocumentationContributionSerializer
