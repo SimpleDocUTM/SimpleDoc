@@ -1,9 +1,6 @@
 from django.urls import include, path
 
 from .views import QuizListAPI, QuizDetailAPI, QuizOptionSubmissionAPI, DocumentationListAPI, DocumentationAPI, ConceptListAPI, UserInfoAPI, DocumentationContributeAPI, SuggestedDocumentationListAPI
-    # , QuizOptionViewSet, QuizQuestionViewSet
-
-
 
 urlpatterns = [
     path('quizzes/', QuizListAPI.as_view()),
@@ -18,4 +15,3 @@ urlpatterns = [
     path('suggesteddocumentation/', SuggestedDocumentationListAPI.as_view()),
     # path('concepts/', ConceptListAPI.as_view()),
 ]
-

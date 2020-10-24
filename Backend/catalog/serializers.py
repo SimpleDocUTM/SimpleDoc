@@ -12,7 +12,7 @@ class QuizListSerializer(serializers.ModelSerializer):
         read_only_fields = ['question_count']
 
     def get_question_count(self, obj):
-            return obj.quizquestion_set.all().count()
+        return obj.quizquestion_set.all().count()
 
 
 class QuizOptionSerializer(serializers.ModelSerializer):
@@ -37,6 +37,12 @@ class QuizDetailSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class QuizIdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Quiz
+        fields = ['id']
+
+
 class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
     is_correct = serializers.SerializerMethodField()
 
@@ -48,30 +54,34 @@ class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
     def get_is_correct(self, obj):
         return obj.option.is_correct
 
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = User #This is the model object we will be serializing.
-        fields = '__all__' #These are the different fields that we want to be serialized. Typing '__all__' implies we want to serialize them all
-    
+        model = User  # This is the model object we will be serializing.
+        fields = '__all__'  # These are the different fields that we want to be serialized. Typing '__all__' implies we want to serialize them all
+
 
 class DocumentationListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Documentation
         fields = ['id', 'title']
 
+
 class DocumentationSerializer(serializers.ModelSerializer):
+    # quiz = QuizIdSerializer(many=False, source='quiz_set')
 
     class Meta:
         model = Documentation
         fields = '__all__'
+
 
 class DocumentationContributionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DocumentationContribution
         fields = '__all__'
+
 
 class ConceptListSerializer(serializers.ModelSerializer):
 
