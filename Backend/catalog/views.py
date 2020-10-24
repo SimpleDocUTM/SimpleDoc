@@ -96,6 +96,7 @@ class DocumentationListAPI(generics.ListAPIView):
 
 class DocumentationAPI(generics.RetrieveAPIView):
     queryset = Documentation.objects.all()
+    serializer_class = DocumentationSerializer
 
     def get_request(self, request):
 
@@ -111,6 +112,11 @@ class DocumentationContributeAPI(generics.CreateAPIView):
             documentname = request.data['documentname']
             definition = request.data['definition']
             description = request.data['description']
+
+            if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+                return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                obj = DocumentationContribution.objects.create(conceptname=conceptname, documentname=documentname, definition=definition, description=description)
             contributorName = request.data['contributorName'] #name
             contributorUtorid = request.data['contributorUtorid'] #Utorid
             contributorStdNum = request.data['contributorStdNum'] #student number
@@ -145,3 +151,9 @@ class DocumentationContributeAPI(generics.CreateAPIView):
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
     serializer_class = ConceptListSerializer
+
+class SuggestedDocumentationListAPI(generics.ListAPIView):
+	queryset = SuggestedDocumentation.objects.all()
+	serializer_class = SuggestedDocumentationSerializer 
+
+
