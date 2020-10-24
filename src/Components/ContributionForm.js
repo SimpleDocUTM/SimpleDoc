@@ -2,6 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
 
@@ -25,7 +27,21 @@ class ContributionForm extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = { conceptname: 'choose one concept', documentname: '', definition: '', description: '' }
+        this.state = { conceptname: '', 
+                       documentname: '',
+                       definition: '',
+                       description: '' ,
+                       contributorName: '',
+                       contributorUtorid: '',
+                       contributorStdNum: '',
+                       contributorEmail: '',
+                       exampleDescription1: '',
+                       example1: '',
+                       exampleDescription2: '',
+                       example2: '',
+                       exampleDescription3: '',
+                       example3: '',
+                    }
     }
 
     handleOnConceptChange = (event) => {
@@ -43,6 +59,46 @@ class ContributionForm extends React.Component {
     handleOnDescriptionChange = (event) => {
         this.setState({ description: event.target.value });
     };
+
+    handleOnContributorNameChange = (event) => {
+        this.setState({ contributorName: event.target.value });
+    };
+
+    handleOnContributorUtoridChange = (event) => {
+        this.setState({ contributorUtorid: event.target.value });
+    };
+
+    handleOnContributorStdNumChange = (event) => {
+        this.setState({ contributorStdNum: event.target.value });
+    };
+
+    handleOnContributorEmailChange = (event) => {
+        this.setState({ contributorEmail: event.target.value });
+    };
+
+    handleOnExDescription1 = (event) => {
+        this.setState({ exampleDescription1: event.target.value });
+    };
+
+    handleOnEx1 = (event) => {
+        this.setState({ example1: event.target.value });
+    };
+
+    handleOnExDescription2 = (event) => {
+        this.setState({ exampleDescription2: event.target.value });
+    };
+
+    handleOnEx2 = (event) => {
+        this.setState({ example2: event.target.value });
+    };
+
+    handleOnExDescription3 = (event) => {
+        this.setState({ exampleDescription3: event.target.value });
+    };
+
+    handleOnEx3 = (event) => {
+        this.setState({ example3: event.target.value });
+    };
     
     handleOnSubmit(event) {
         event.preventDefault();
@@ -51,7 +107,17 @@ class ContributionForm extends React.Component {
             conceptname: this.state.conceptname,
             documentname: this.state.documentname,
             definition: this.state.definition,
-            description: this.state.description
+            description: this.state.description,
+            contributorName: this.state.contributorName,
+            contributorUtorid: this.state.contributorUtorid,
+            contributorStdNum: this.state.contributorStdNum,
+            contributorEmail: this.state.contributorEmail,
+            exampleDescription1: this.state.exampleDescription1,
+            exampleDescription2: this.state.exampleDescription2,
+            exampleDescription3: this.state.exampleDescription3,
+            example1: this.state.example1,
+            example2: this.state.example2,
+            example3: this.state.example3
         })
         .then(function(response) {
             console.log(response);
@@ -63,11 +129,99 @@ class ContributionForm extends React.Component {
     render(){
         return (
             <div>
-                <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)}>
+                <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
+                    <h2 style={{marginTop: "30px", marginInlineStart: "33.5ch" }}>
+                       Personal Information 
+                    </h2>
+                  <div>
+                    <TextField //name
+                        style={{width: "80ch", marginTop: "5px", marginInlineStart: "50ch" }}
+                        id="name"
+                        required
+                        label="Name"
+                        multiline
+                        value={this.state.contributorName}
+                        onChange={this.handleOnContributorNameChange.bind(this)}
+                        //placeholder="Enter your name"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start" >
+                                <AccountCircle style={{marginBottom: "14px"}}/>
+                              </InputAdornment>
+                            ),
+                          }}
+                    />
+                  </div>
+                  <div>
+                    <TextField //Utorid
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Utorid"
+                        multiline
+                        value={this.state.contributorUtorid}
+                        onChange={this.handleOnContributorUtoridChange.bind(this)}
+                        //placeholder="Enter your Utorid"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start" >
+                                <AccountCircle style={{marginBottom: "14px"}}/>
+                              </InputAdornment>
+                            ),
+                          }}
+                    />
+                  </div>
                   <div>
                     <TextField
-                        style={{padding: "15px", width: "50ch"}}
-                        id="standard-select-currency"
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Student Number"
+                        multiline
+                        value={this.state.contributorStdNum}
+                        onChange={this.handleOnContributorStdNumChange.bind(this)}
+                        //placeholder="Enter your student number"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start" >
+                                <AccountCircle style={{marginBottom: "14px"}}/>
+                              </InputAdornment>
+                            ),
+                          }}
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="UofT Email"
+                        multiline
+                        value={this.state.contributorEmail}
+                        onChange={this.handleOnContributorEmailChange.bind(this)}
+                        //placeholder="Enter your email (UofT email preferred)"
+                        variant="filled"
+                        InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start" >
+                                <AccountCircle style={{marginBottom: "14px"}}/>
+                              </InputAdornment>
+                            ),
+                          }}
+                    />
+                  </div>
+                  <h2 style={{marginTop: "40px", marginInlineStart: "33.5ch" }}>
+                      Create the Documentation
+                  </h2>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Concept Name"
                         select
                         onChange={this.handleOnConceptChange.bind(this)}
                         value={this.state.conceptname}
@@ -83,41 +237,135 @@ class ContributionForm extends React.Component {
                   </div>
                   <div>
                     <TextField
-                        style={{padding: "15px", width: "50ch"}}
-                        id="outlined-basic"
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        //id="filled-multiline-static"
+                        required
+                        label="Documentation Name"
                         multiline
                         value={this.state.documentname}
                         onChange={this.handleOnDocNameChange.bind(this)}
                         placeholder="Enter the Documentation Name"
-                        variant="outlined"
+                        variant="filled"
                     />
                   </div>
                   <div>
                     <TextField
-                        style={{padding: "15px", width: "50ch"}}
-                        id="outlined-multiline-static"
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Documentation Definition"
                         multiline
                         value={this.state.definition}
                         onChange={this.handleOnDefChange.bind(this)}
                         rows={4}
                         placeholder="Enter the definition"
-                        variant="outlined"
+                        variant="filled"
                     />
                   </div>
                   <div>
                     <TextField
-                        style={{padding: "15px", width: "50ch"}}
-                        id="outlined-multiline-static"
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Documentation Description"
                         multiline
                         value={this.state.description}
                         onChange={this.handleOnDescriptionChange.bind(this)}
                         rows={4}
                         placeholder="Enter the description"
-                        variant="outlined"
+                        variant="filled"
+                    />
+                  </div>
+                  <h2 style={{marginTop: "40px", marginInlineStart: "33.5ch" }}>
+                      Examples
+                  </h2>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "5px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Example1 Description"
+                        multiline
+                        value={this.state.exampleDescription1}
+                        onChange={this.handleOnExDescription1.bind(this)}
+                        rows={3}
+                        placeholder="Please describe example one"
+                        variant="filled"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Example1"
+                        multiline
+                        value={this.state.example1}
+                        onChange={this.handleOnEx1.bind(this)}
+                        rows={6}
+                        placeholder="Enter example one"
+                        helperText="Please type in code snippet(with indentation)"
+                        variant="filled"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "40px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Example2 Description"
+                        multiline
+                        value={this.state.exampleDescription2}
+                        onChange={this.handleOnExDescription2.bind(this)}
+                        rows={3}
+                        placeholder="Please describe example two"
+                        variant="filled"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        required
+                        label="Example2"
+                        multiline
+                        value={this.state.example2}
+                        onChange={this.handleOnEx2.bind(this)}
+                        rows={6}
+                        placeholder="Enter example two"
+                        helperText="Please type in code snippet(with indentation)"
+                        variant="filled"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "40px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        label="Example3 Description"
+                        multiline
+                        value={this.state.exampleDescription3}
+                        onChange={this.handleOnExDescription3.bind(this)}
+                        rows={3}
+                        placeholder="Please describe example three"
+                        variant="filled"
+                    />
+                  </div>
+                  <div>
+                    <TextField
+                        style={{width: "80ch", marginTop: "20px", marginInlineStart: "50ch" }}
+                        id="filled-multiline-static"
+                        label="Example3"
+                        multiline
+                        value={this.state.example3}
+                        onChange={this.handleOnEx3.bind(this)}
+                        rows={6}
+                        placeholder="Enter example three"
+                        helperText="Please type in code snippet(with indentation)"
+                        variant="filled"
                     />
                   </div>
 
-                    <Button style={{ marginLeft: "15px" }} variant="contained" color="primary" type="submit" >Submit</Button>
+                    <Button style={{ marginLeft: "50ch", marginTop: "30px" }} variant="contained" color="primary" type="submit" >Submit</Button>
                 </form>
             </div>
         );
@@ -129,6 +377,16 @@ ContributionForm.propTypes = {
     documentname: PropTypes.string,
     definition: PropTypes.string,
     description: PropTypes.string,
+    contributorName : PropTypes.string,
+    contributorUtorid : PropTypes.string,
+    contributorStdNum : PropTypes.string,
+    contributorEmail : PropTypes.string,
+    exampleDescription1 : PropTypes.string,
+    example1 : PropTypes.string,
+    exampleDescription2 : PropTypes.string,
+    example2 : PropTypes.string,
+    exampleDescription3 : PropTypes.string,
+    example3 : PropTypes.string,
   };
 
 export default ContributionForm
