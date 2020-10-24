@@ -9,6 +9,9 @@ import styles from '../mystyle.module.css'
 
 class DocumentView extends React.Component {
     // https://youtu.be/KEEKn7Me-ms
+    toQuiz = async (e) => {
+        this.props.history.push('/quiz')
+    }
 
     render() {
 
@@ -17,6 +20,7 @@ class DocumentView extends React.Component {
                 <ButtonAppBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
+
 
                     <h1 className={styles.header}>
                         Recursion
@@ -32,7 +36,11 @@ class DocumentView extends React.Component {
                         Description
                 </h2>
                     <TextComponent text="Recusion solves a large problem by sloving a smaller problem each recursive iteration eventually reaching a base case." />
-                    <Video id="KEEKn7Me-ms" title="Recursion video" align="center" />
+
+                    <Container maxWidth="md">
+                        <Video id="KEEKn7Me-ms" title="Recursion video" />
+                    </Container>
+
                     <h2>
                         Code Examples
                 </h2>
@@ -44,10 +52,7 @@ class DocumentView extends React.Component {
                         Code Example n
                 </h3>
                     <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python" />
-
-
-                    <Button variant="contained" color="primary" onClick={1} >Take a Quiz</Button>
-
+                    <Button variant="contained" color="primary" onClick={this.toQuiz} >Take a Quiz</Button>
 
                 </Container>
 
