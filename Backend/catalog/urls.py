@@ -2,7 +2,6 @@ from django.urls import include, path
 
 from .views import QuizListAPI, QuizDetailAPI, QuizOptionSubmissionAPI, QuizSubmissionAPI, DocumentationListAPI, DocumentationAPI, ConceptListAPI, UserInfoAPI, DocumentationContributeAPI, SuggestedDocumentationListAPI
 
-
 urlpatterns = [
     path('quizzes/', QuizListAPI.as_view()),
     path('quizzes/<int:pk>/', QuizDetailAPI.as_view()),
@@ -13,7 +12,7 @@ urlpatterns = [
     path('documents/', DocumentationListAPI.as_view()),
     path('documents/<int:pk>/', DocumentationAPI.as_view()),
     path('documents/contribution/', DocumentationContributeAPI.as_view()),
-    path('concepts/<int:pk>/', ConceptListAPI.as_view()),
+    path('concepts/', ConceptListAPI.as_view()),
     path('suggesteddocumentation/', SuggestedDocumentationListAPI.as_view()),
     # path('concepts/', ConceptListAPI.as_view()),
 ]

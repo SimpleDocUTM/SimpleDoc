@@ -60,6 +60,74 @@ class ConceptListAPI(generics.ListAPIView):
             return Response(self.get_serializer(obj).data)
 
 
+class UserInfoAPI(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer = UserSerializer
+
+
+class DocumentationListAPI(generics.ListAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationListSerializer
+
+
+class DocumentationAPI(generics.RetrieveAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationSerializer
+
+
+class DocumentationContributeAPI(generics.CreateAPIView):
+    serializer_class = DocumentationContributionSerializer
+
+    def post(self, request, *args, **kwargs):
+            conceptname = request.data['conceptname']
+            documentname = request.data['documentname']
+            definition = request.data['definition']
+            description = request.data['description']
+
+            if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+                return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                obj = DocumentationContribution.objects.create(conceptname=conceptname, documentname=documentname, definition=definition, description=description)
+            contributorName = request.data['contributorName'] #name
+            contributorUtorid = request.data['contributorUtorid'] #Utorid
+            contributorStdNum = request.data['contributorStdNum'] #student number
+            contributorEmail = request.data['contributorEmail'] #email
+            exampleDescription1 = request.data['exampleDescription1'] # example description
+            example1 = request.data['example1'] #example1
+            exampleDescription2 = request.data['exampleDescription2'] # example description
+            example2 = request.data['example2'] #example2
+            exampleDescription3 = request.data['exampleDescription3'] # example description
+            example3 = request.data['example3'] #example3
+
+            if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, 
+                    definition=definition, description=description, contributorName=contributorName, 
+                    contributorUtorid=contributorUtorid, contributorStdNum=contributorStdNum, 
+                    contributorEmail=contributorEmail, exampleDescription1=exampleDescription1, example1=example1,
+                    exampleDescription2=exampleDescription2, exampleDescription3=exampleDescription3, 
+                    example2=example2,example3=example3).exists():
+                return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+            else:
+                obj = DocumentationContribution.objects.create(conceptname=conceptname, documentname=documentname, 
+                    definition=definition, description=description, contributorName=contributorName, 
+                    contributorUtorid=contributorUtorid, contributorStdNum=contributorStdNum, 
+                    contributorEmail=contributorEmail, exampleDescription1=exampleDescription1, example1=example1,
+                    exampleDescription2=exampleDescription2, exampleDescription3=exampleDescription3, 
+                    example2=example2,example3=example3)
+                obj.save()
+                #return Response(serializer.data, status=status.HTTP_201_CREATED)
+                return Response(self.get_serializer(obj).data)
+
+          
+class SuggestedDocumentationListAPI(generics.ListAPIView):
+	queryset = SuggestedDocumentation.objects.all()
+	serializer_class = SuggestedDocumentationSerializer 
+
+
+class ConceptListAPI(generics.ListAPIView):
+    queryset = Concept.objects.all()
+    serializer_class = ConceptListSerializer
+
+
 class QuizListAPI(generics.ListAPIView):
     """
     Grabs the full list of quizzes.
@@ -128,6 +196,11 @@ class QuizOptionSubmissionAPI(generics.UpdateAPIView):
         if _is_valid_quiz_option(question, option):
             obj = get_object_or_404(
                 QuizOptionSubmission, question=question, quiz_user=quiz_user)
+				
+        # Verify that the user has selected an option that is applicable for the chosen question.
+        if QuizQuestion.objects.filter(question=question, quizoption=option).exists():
+            obj, created = QuizOptionSubmission.objects.get_or_create(
+                question=question)
 
             obj.option = option
             obj.save()
@@ -153,7 +226,6 @@ class QuizSubmissionAPI(generics.GenericAPIView):
         # Grab all the data from the request.
         quiz_user_id = request.data['quizuser']
         quiz_id = request.data['quiz']
-
         quiz_user = get_object_or_404(QuizUser, id=quiz_user_id)
         quiz = get_object_or_404(Quiz, id=quiz_id)
 
@@ -176,14 +248,3 @@ class QuizSubmissionAPI(generics.GenericAPIView):
         quiz_user.save()
 
         return Response(self.get_serializer(quiz).data)
- 
-
-class ConceptListAPI(generics.ListAPIView):
-    queryset = Concept.objects.all()
-    serializer_class = ConceptListSerializer
-
-    
-class SuggestedDocumentationListAPI(generics.ListAPIView):
-	queryset = SuggestedDocumentation.objects.all()
-	serializer_class = SuggestedDocumentationSerializer 
-

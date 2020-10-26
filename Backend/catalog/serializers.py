@@ -89,13 +89,13 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class DocumentationListSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Documentation
         fields = ['id', 'title']
 
 
 class DocumentationSerializer(serializers.ModelSerializer):
+    # quiz = QuizIdSerializer(many=False, source='quiz_set')
 
     class Meta:
         model = Documentation

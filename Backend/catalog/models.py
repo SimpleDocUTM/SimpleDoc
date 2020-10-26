@@ -33,6 +33,14 @@ class QuizOption(models.Model):
         return self.text
 
 
+class QuizOptionSubmission(models.Model):
+    question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    option = models.ForeignKey(QuizOption, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.question.question
+
+      
 class Concept(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=255)
@@ -46,10 +54,10 @@ class Concept(models.Model):
 
 class Documentation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=255)  # the name of the concept
-    description = models.TextField(max_length=255)
+    title = models.TextField() #the name of the concept
+    description = models.TextField()
     difficulty = models.IntegerField(default=0)
-    contributor = models.CharField(max_length=255)  # User object
+    contributor = models.TextField() 
     concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
     rating = models.FloatField(default=0)
     # blank = True, null=True makes this field optional. We do not NEED a quiz for every piece of documentation.
@@ -64,10 +72,20 @@ class Documentation(models.Model):
 
 
 class DocumentationContribution(models.Model):
-    conceptname = models.TextField(max_length=255)
-    documentname = models.TextField(max_length=255)
-    definition = models.TextField(max_length=255)
-    description = models.TextField(max_length=255)
+    conceptname = models.TextField()
+    documentname = models.TextField()
+    definition = models.TextField()
+    description = models.TextField()
+    contributorName = models.TextField() #name
+    contributorUtorid = models.TextField() #Utorid
+    contributorStdNum = models.TextField() #student number
+    contributorEmail = models.TextField() #email
+    exampleDescription1 = models.TextField() # example description
+    example1 = models.TextField() #example1
+    exampleDescription2 = models.TextField() # example description
+    example2 = models.TextField() #example2
+    exampleDescription3 = models.TextField() # example description
+    example3 = models.TextField() #example3
 
     def __str__(self):
         return self.documentname
