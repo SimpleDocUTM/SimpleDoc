@@ -6,15 +6,57 @@ import Container from '@material-ui/core/Container';
 import CodeComponent from '../Components/CodeComponent';
 import Button from '@material-ui/core/Button';
 import styles from '../mystyle.module.css'
+import SimpleDocRest from "../api/SimpleDocRest";
 
 class DocumentView extends React.Component {
     // https://youtu.be/KEEKn7Me-ms
+    constructor(props) {
+        super(props);
+
+        this.state = { docTitle: "", docId: "", description: "", consid: 1 };
+    }
     toQuiz = async (e) => {
         this.props.history.push('/quiz')
     }
 
-    render() {
+    fetchDoc = async () => {
+        SimpleDocRest.get(`/documents/`)
+            .then((result) => {
 
+                this.setState({
+                    docTitle: result.data[1].title,
+                    dodId: result.data[1].id,
+                });
+            }
+
+            )
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+
+
+    fetchConcepts = async () => {
+        SimpleDocRest.get("/concepts/" + "1" + "/")
+            .then((result) => {
+                this.setState({
+                    description: result.data.description,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    componentDidMount() {
+        this.fetchDoc();
+        this.fetchConcepts();
+    }
+
+
+    render() {
+        const { docTitle, docId, description } = this.state;
         return (
             <div>
                 <ButtonAppBar />
@@ -23,8 +65,8 @@ class DocumentView extends React.Component {
 
 
                     <h1 className={styles.header}>
-                        Recursion
-                </h1>
+                        {docTitle}
+                    </h1>
                     <h6 className={styles.created}>
                         October 12, 2020 by User1
                     </h6>
@@ -35,7 +77,8 @@ class DocumentView extends React.Component {
                     <h2>
                         Description
                 </h2>
-                    <TextComponent text="Recusion solves a large problem by sloving a smaller problem each recursive iteration eventually reaching a base case." />
+                    <TextComponent text={description} />
+                    {/* <TextComponent text="Recusion solves a large problem by sloving a smaller problem each recursive iteration eventually reaching a base case." /> */}
 
                     <Container maxWidth="md">
                         <Video id="KEEKn7Me-ms" title="Recursion video" />
