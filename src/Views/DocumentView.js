@@ -9,79 +9,62 @@ import styles from '../mystyle.module.css'
 import SimpleDocRest from "../api/SimpleDocRest";
 
 class DocumentView extends React.Component {
-    // https://youtu.be/KEEKn7Me-ms
+
     constructor(props) {
         super(props);
 
-        this.state = { docTitle: "", docId: "", description: "", consid: 1 };
+        this.state = { docTitle: "", docId: "", docDescription: "", consid: 1, docAuthor: "", docDate: "" };
     }
     toQuiz = async (e) => {
         this.props.history.push('/quiz')
     }
 
     fetchDoc = async () => {
-        SimpleDocRest.get(`/documents/`)
+        SimpleDocRest.get(`/documents/1/`)
             .then((result) => {
-
                 this.setState({
-                    docTitle: result.data[1].title,
-                    dodId: result.data[1].id,
+                    docTitle: result.data.title,
+                    dodId: result.data.id,
+                    docDescription: result.data.description,
+                    docAuthor: result.data.contributor,
+                    docDate: result.data.created,
                 });
             }
-
             )
             .catch((error) => {
                 console.log(error);
             });
     };
-
-
-
-    fetchConcepts = async () => {
-        SimpleDocRest.get("/concepts/" + "1" + "/")
-            .then((result) => {
-                this.setState({
-                    description: result.data.description,
-                });
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
     componentDidMount() {
         this.fetchDoc();
-        this.fetchConcepts();
     }
 
 
     render() {
-        const { docTitle, docId, description } = this.state;
+        const { docTitle, docId, docDescription, docAuthor, docDate, } = this.state;
         return (
             <div>
                 <ButtonAppBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
-
-
                     <h1 className={styles.header}>
                         {docTitle}
                     </h1>
                     <h6 className={styles.created}>
-                        October 12, 2020 by User1
+                        by {docAuthor}
                     </h6>
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
                     <TextComponent className={styles.paragraph} text="Recursion (adjective: recursive) occurs when a thing is defined in terms of itself or of its type. Recursion is used in a variety of disciplines ranging from linguistics to logic. The most common application of recursion is in mathematics and computer science, where a function being defined is applied within its own definition. While this apparently defines an infinite number of instances (function values), it is often done in such a way that no infinite loop or infinite chain of references can occur. " />
+                    {/* column not in database, not implemented */}
                     <h2>
                         Description
                 </h2>
-                    <TextComponent text={description} />
-                    {/* <TextComponent text="Recusion solves a large problem by sloving a smaller problem each recursive iteration eventually reaching a base case." /> */}
-
+                    <TextComponent text={docDescription} />
                     <Container maxWidth="md">
                         <Video id="KEEKn7Me-ms" title="Recursion video" />
+                        {/* column not in database, not implemented */}
                     </Container>
 
                     <h2>
@@ -95,6 +78,7 @@ class DocumentView extends React.Component {
                         Code Example n
                 </h3>
                     <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python" />
+                    {/* no database, not implemented */}
                     <Button variant="contained" color="primary" onClick={this.toQuiz} >Take a Quiz</Button>
 
                 </Container>
