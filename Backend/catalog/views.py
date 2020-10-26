@@ -19,7 +19,7 @@ class DocumentationListAPI(generics.ListAPIView):
 
 class DocumentationAPI(generics.RetrieveAPIView):
     queryset = Documentation.objects.all()
-    serializer_class = DocumentationSerializer
+    serializer_class = DocumentationSerializer #default get
 
 
 class DocumentationContributeAPI(generics.CreateAPIView):
