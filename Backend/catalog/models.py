@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import models as authmodels
+from django.contrib.auth.models import AbstractUser
 
 
 class Quiz(models.Model):
@@ -40,7 +40,7 @@ class QuizOptionSubmission(models.Model):
     def __str__(self):
         return self.question.question
 
-
+      
 class Concept(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=255)
@@ -58,7 +58,6 @@ class Documentation(models.Model):
     description = models.TextField()
     difficulty = models.IntegerField(default=0)
     contributor = models.TextField() 
-
     concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
     rating = models.FloatField(default=0)
     # blank = True, null=True makes this field optional. We do not NEED a quiz for every piece of documentation.
@@ -92,14 +91,34 @@ class DocumentationContribution(models.Model):
         return self.documentname
 
 
-class User(authmodels.User):
+class User(AbstractUser):
     reputation = models.IntegerField(default=0)
     user_id = models.CharField(max_length=10, primary_key=True)
-    logged_In = models.BooleanField()
-    is_admin = models.BooleanField()
 
     def __str__(self):
-       return self.user_id
+        return self.username
+
+
+class QuizUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    result = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+    has_submitted = models.BooleanField(default=False)
+    date_submitted = models.DateTimeField(null=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class QuizOptionSubmission(models.Model):
+    quiz_user = models.ForeignKey(QuizUser, on_delete=models.CASCADE)
+    question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    option = models.ForeignKey(QuizOption, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.question.question
+      
 
 class SuggestedDocumentation(models.Model):
 	user=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -108,4 +127,3 @@ class SuggestedDocumentation(models.Model):
 
 	def __str__(self):
 		return self.documenation_id
-
