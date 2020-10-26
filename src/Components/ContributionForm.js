@@ -6,19 +6,104 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
+import ListSubheader from '@material-ui/core/ListSubheader';
+import Select from '@material-ui/core/Select';
 
-const concepts = [
+const concepts108 = [
   {
-    value: 'List',
-    label: 'List',
+    value: 'Boolean',
+    label: 'Boolean',
   },
   {
-    value: 'Sorting algorithm',
-    label: 'Sorting algorithm',
+    value: 'Function Design Recipe',
+    label: 'Function Design Recipe',
+  },
+  {
+    value: 'Strings: Index, slicing, Methods and Formatting',
+    label: 'Strings: Index, slicing, Methods and Formatting',
+  },
+  {
+    value: 'Condtionals',
+    label: 'Condtionals',
+  },
+  {
+    value: 'For loops and Nested For Loops',
+    label: 'For loops and Nested For Loops',
+  },
+  {
+    value: 'Lists and Nested Lists',
+    label: 'Lists and Nested Lists',
+  },
+  {
+    value: 'File Input and Output: Read and Write',
+    label: 'File Input and Output: Read and Write',
+  },
+  {
+    value: 'Tuples',
+    label: 'Tuples',
+  },
+  {
+    value: 'Dictionaries',
+    label: 'Dictionaries',
+  },
+  {
+    value: 'Nested Dictionaries',
+    label: 'Nested Dictionaries',
+  },
+  {
+    value: 'Insertion Sort, Selection Sort, Bubble sort and Merge Sort',
+    label: 'Insertion Sort, Selection Sort, Bubble sort and Merge Sort',
+  },
+  {
+    value: 'Timing and Complexity',
+    label: 'Timing and Complexity',
+  },
+  {
+    value: 'Object Oriented Programming in Python',
+    label: 'Object Oriented Programming in Python',
+  },
+];
+
+const concepts148 = [
+  {
+    value: 'Python Memory Model',
+    label: 'Python Memory Model',
+  },
+  {
+    value: 'Object Oriented Programming ',
+    label: 'Object Oriented Programming ',
+  },
+  {
+    value: 'Inheritance and abstractions',
+    label: 'Inheritance and abstractions',
+  },
+  {
+    value: 'Stacks and Queues: Priority queues and First in first out',
+    label: 'Stacks and Queues: Priority queues and First in first out',
+  },
+  {
+    value: 'Complexity and Big-Oh',
+    label: 'Complexity and Big-Oh',
+  },
+  {
+    value: 'Linked Lists',
+    label: 'Linked Lists',
   },
   {
     value: 'Recursion',
     label: 'Recursion',
+  },
+  {
+    value: 'Trees and Binary Trees',
+    label: 'Trees and Binary Trees',
+  },
+  {
+    value: 'Binary Search Trees',
+    label: 'Binary Search Trees',
+  },
+  {
+    value: 'List Comprehensions',
+    label: 'List Comprehensions',
   },
 ];
 
@@ -230,7 +315,17 @@ class ContributionForm extends React.Component {
 
               helperText="Please select one concept"
             >
-              {concepts.map((option) => (
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <ListSubheader>CSC108</ListSubheader>
+              {concepts108.map((option) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+              <ListSubheader>CSC148</ListSubheader>
+              {concepts148.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
                   {option.label}
                 </MenuItem>
@@ -375,6 +470,8 @@ class ContributionForm extends React.Component {
   }
 
 }
+
+
 ContributionForm.propTypes = {
   conceptname: PropTypes.string,
   documentname: PropTypes.string,
