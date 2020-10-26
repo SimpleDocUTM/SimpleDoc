@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 class QuizView extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = { quizTitle: "", quizId: props.quizId, quizQuestions: [] };
     }
 
