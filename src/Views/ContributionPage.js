@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonAppBar from '../Components/SampleNav';
+import ButtonAppBar from '../Components/NavBar';
 //import Button from '@material-ui/core/Button';
 // import Container from '@material-ui/core/Container';
 //import TextField from '@material-ui/core/TextField';

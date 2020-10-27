@@ -6,15 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import CreatePage from '../Components/CreatePage'
+import CreatePage from '../Components/CreatePage';
+import '../mystyle.module.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    backgroundColor: '#121212',
+    
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  
   title: {
     flexGrow: 1,
   },
@@ -40,7 +41,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Help
           </Typography>
-	  </<Typography variant="h6" className={classes.title}>
+	  <Typography variant="h6" className={classes.title}>
             Contribute
           </Typography>
           <CreatePage />

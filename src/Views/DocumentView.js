@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonAppBar from '../Components/SampleNav';
+import ButtonAppBar from '../Components/NavBar';
 import TextComponent from '../Components/textComponent';
 import Video from '../Components/Video';
 import Container from '@material-ui/core/Container';

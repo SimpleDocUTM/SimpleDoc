@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ButtonAppBar from '../Components/SampleNav';
+import ButtonAppBar from '../Components/NavBar';
 import MultipleChoiceQuestion from "../Components/MultipleChoiceQuestion";
 import SimpleDocRest from "../api/SimpleDocRest";
 import Container from '@material-ui/core/Container';
@@ -12,7 +12,7 @@ class QuizView extends React.Component {
     }
 
     fetchQuiz = async () => {
-        SimpleDocRest.get(`/quizzes/${this.state.quizId/`)
+        SimpleDocRest.get(`/quizzes/${this.state.quizId}/`)
             .then((result) => {
                 this.setState({
                     quizTitle: result.data.title,
