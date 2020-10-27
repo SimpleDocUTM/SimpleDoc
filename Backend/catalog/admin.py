@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, QuizUser, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, QuizUser, Documentation, DocumentationContribution, DocumentationExample, DocumentationVideo, Concept, User, SuggestedDocumentation
 
 
 class MyUserAdmin(UserAdmin):
@@ -10,6 +10,7 @@ class MyUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('reputation', 'user_id',)}),
     )
+
 
 # Register your models here.
 admin.site.register(Quiz)
@@ -21,5 +22,7 @@ admin.site.register(User, MyUserAdmin)
 admin.site.register(QuizOptionSubmission)
 admin.site.register(Documentation)
 admin.site.register(DocumentationContribution)
+admin.site.register(DocumentationExample)
+admin.site.register(DocumentationVideo)
 admin.site.register(Concept)
 admin.site.register(SuggestedDocumentation)
