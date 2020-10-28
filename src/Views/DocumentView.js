@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../Components/Header';
 import ButtonAppBar from '../Components/NavBar';
 import TextComponent from '../Components/textComponent';
 import Video from '../Components/Video';
@@ -44,7 +45,8 @@ class DocumentView extends React.Component {
         const { docTitle, docId, docDescription, docAuthor, docDate, } = this.state;
         return (
             <div>
-                <ButtonAppBar />
+		<Header />
+                <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
                     <h1 className={styles.header}>
