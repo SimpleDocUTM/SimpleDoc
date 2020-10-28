@@ -13,7 +13,7 @@ class DocumentView extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { docTitle: "", docId: "", docDescription: "", consid: 1, docAuthor: "", docDate: "" };
+        this.state = { docTitle: "", docId: "", docDescription: "", consid: 1, docAuthor: "", docDate: "", videos: [], codes: [], docDefinition: "", };
     }
     toQuiz = async (e) => {
         this.props.history.push('/quiz')
@@ -28,6 +28,10 @@ class DocumentView extends React.Component {
                     docDescription: result.data.description,
                     docAuthor: result.data.contributor,
                     docDate: result.data.created,
+                    videos: result.data.videos,
+                    codes: result.data.examples,
+                    docDefinition: result.data.definition,
+
                 });
             }
             )
@@ -41,7 +45,7 @@ class DocumentView extends React.Component {
 
 
     render() {
-        const { docTitle, docId, docDescription, docAuthor, docDate, } = this.state;
+        const { docTitle, docId, docDescription, docAuthor, docDate, videos, codes, docDefinition } = this.state;
         return (
             <div>
                 <ButtonAppBar />
@@ -56,29 +60,35 @@ class DocumentView extends React.Component {
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
-                    <TextComponent className={styles.paragraph} text="Recursion (adjective: recursive) occurs when a thing is defined in terms of itself or of its type. Recursion is used in a variety of disciplines ranging from linguistics to logic. The most common application of recursion is in mathematics and computer science, where a function being defined is applied within its own definition. While this apparently defines an infinite number of instances (function values), it is often done in such a way that no infinite loop or infinite chain of references can occur. " />
-                    {/* column not in database, not implemented */}
+                    <TextComponent className={styles.paragraph} text={docDefinition} />
                     <h2>
                         Description
                 </h2>
                     <TextComponent text={docDescription} />
                     <Container maxWidth="md">
-                        <Video id="KEEKn7Me-ms" title="Recursion video" />
-                        {/* column not in database, not implemented */}
+                        {videos.map(({ url, title }) => (
+                            <Video
+                                id={url}
+                                title={title}
+                            />
+                        ))}
                     </Container>
+
 
                     <h2>
                         Code Examples
-                </h2>
-                    <h3>
-                        Code Example 1
-                </h3>
-                    <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python" />
-                    <h3>
-                        Code Example n
-                </h3>
-                    <CodeComponent code={"# Sample highlight \nprint('1')"} language="language-python" />
-                    {/* no database, not implemented */}
+                    </h2>
+                    {codes.map(({ description, code }) => (
+                        <div>
+                            <h3>
+                                {description}
+                            </h3>
+                            <CodeComponent
+                                code={code.replace("\\n", "\n")}
+                                language="language-python"
+                            />
+                        </div>
+                    ))}
                     <Button variant="contained" color="primary" onClick={this.toQuiz} >Take a Quiz</Button>
 
                 </Container>
