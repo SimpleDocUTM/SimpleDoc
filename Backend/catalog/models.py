@@ -35,13 +35,14 @@ class QuizOption(models.Model):
 
 class Concept(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    description = models.CharField(max_length=255)
+    name = models.TextField()
+    category = models.TextField() #CSC108 or CSC148
 
     class Meta:
         ordering = ['created']
 
     def __str__(self):
-        return self.description
+        return self.name
 
 
 class Documentation(models.Model):
