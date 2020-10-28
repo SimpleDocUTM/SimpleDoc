@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation 
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, QuizUser, Documentation, DocumentationExample, DocumentationVideo, DocumentationContribution, Concept, User, SuggestedDocumentation
 
 
 class QuizListSerializer(serializers.ModelSerializer):
@@ -55,6 +55,32 @@ class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
         return obj.option.is_correct
 
 
+class QuizUserSerializer(serializers.ModelSerializer):
+    quizoptionsubmission_set = QuizOptionSubmissionSerializer(many=True)
+
+    class Meta:
+        model = QuizUser
+        fields = '__all__'
+
+
+class QuizSubmissionSerializer(serializers.ModelSerializer):
+    quizuser_set = serializers.SerializerMethodField()
+    quizquestion_set = QuizQuestionSerializer(many=True)
+
+    class Meta:
+        model = Quiz
+        fields = '__all__'
+
+    def get_quizuser_set(self, obj):
+        try:
+            quiz_user = QuizUser.objects.get(
+                user=self.context['request'].user, quiz=obj)
+            serializer = QuizUserSerializer(quiz_user)
+            return serializer.data
+        except:
+            return None
+
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -68,8 +94,25 @@ class DocumentationListSerializer(serializers.ModelSerializer):
         fields = ['id', 'title']
 
 
+class DocumentationVideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DocumentationVideo
+        # Exclude the id of the documentation as it is going to be nested inside a document and will be redundant.
+        exclude = ['documentation']
+
+
+class DocumentationExampleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DocumentationExample
+        # Exclude the id of the documentation as it is going to be nested inside a document and will be redundant.
+        exclude = ['documentation']
+
+
 class DocumentationSerializer(serializers.ModelSerializer):
-    # quiz = QuizIdSerializer(many=False, source='quiz_set')
+    videos = DocumentationVideoSerializer(
+        many=True, source='documentationvideo_set')
+    examples = DocumentationExampleSerializer(
+        many=True, source='documentationexample_set')
 
     class Meta:
         model = Documentation
@@ -89,8 +132,9 @@ class ConceptListSerializer(serializers.ModelSerializer):
         model = Concept
         fields = '__all__'
 
+
 class SuggestedDocumentationSerializer(serializers.ModelSerializer):
-	
-	class Meta:
-		model = SuggestedDocumentation
-		fields = '__all__'
+
+    class Meta:
+        model = SuggestedDocumentation
+        fields = '__all__'

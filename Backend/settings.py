@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'catalog.User'
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 
@@ -85,11 +87,11 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SimpleDoc', 
-        'USER': 'postgres', 
-        'PASSWORD': '', 
+        'NAME': 'simpledoc',
+        'USER': 'simpledoc',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
-        'PORT': '5432', 
+        'PORT': '',
     }
 }
 

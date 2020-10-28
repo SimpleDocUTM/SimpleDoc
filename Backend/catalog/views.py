@@ -25,6 +25,53 @@ class DocumentationAPI(generics.RetrieveAPIView):
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
     serializer_class = ConceptListSerializer
+class DocumentationContributeAPI(generics.CreateAPIView):
+    serializer_class = DocumentationContributionSerializer
+
+    def post(self, request, *args, **kwargs):
+        conceptname = request.data['conceptname']
+        documentname = request.data['documentname']
+        definition = request.data['definition']
+        description = request.data['description']
+
+        if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+            return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            obj = DocumentationContribution.objects.create(
+                conceptname=conceptname, documentname=documentname, definition=definition, description=description)
+            obj.save()
+            # return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(self.get_serializer(obj).data)
+
+
+class ConceptListAPI(generics.ListAPIView):
+    queryset = Concept.objects.all()
+    serializer_class = ConceptListSerializer
+
+    def post(self, request, *args, **kwargs):
+        conceptname = request.data['conceptname']
+        documentname = request.data['documentname']
+        definition = request.data['definition']
+        description = request.data['description']
+
+        if DocumentationContribution.objects.filter(conceptname=conceptname, documentname=documentname, definition=definition, description=description).exists():
+            return Response({"message": "Documentation already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            obj = DocumentationContribution.objects.create(
+                conceptname=conceptname, documentname=documentname, definition=definition, description=description)
+            obj.save()
+            # return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(self.get_serializer(obj).data)
+
+
+class UserInfoAPI(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer = UserSerializer
+
+
+class DocumentationListAPI(generics.ListAPIView):
+    queryset = Documentation.objects.all()
+    serializer_class = DocumentationListSerializer
 
 
 class DocumentationContributeAPI(generics.CreateAPIView):
@@ -69,9 +116,12 @@ class DocumentationContributeAPI(generics.CreateAPIView):
             return Response(self.get_serializer(obj).data)
 
 
+
 class SuggestedDocumentationListAPI(generics.ListAPIView):
     queryset = SuggestedDocumentation.objects.all()
     serializer_class = SuggestedDocumentationSerializer
+
+
 
 
 class QuizListAPI(generics.ListAPIView):
