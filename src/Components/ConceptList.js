@@ -12,15 +12,15 @@ export class ConceptList extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     axios.get('simpledoc.utm.utoronto.ca:8000/api/concepts/').then((res) => {
-    //         console.log("Documents: ")
-    //         console.log(res.data)
-    //         this.setState({
-    //             documents: res.data
-    //         })
-    //     })
-    // }
+    componentDidMount() {
+        axios.get('simpledoc.utm.utoronto.ca:8000/api/concepts/').then((res) => {
+            console.log("Concepts: ")
+            console.log(res.data)
+            this.setState({
+                concepts: res.data
+            })
+        })
+    }
 
     render() {
         var concepts = [];
@@ -35,11 +35,6 @@ export class ConceptList extends Component {
                 <List
                     component="nav"
                     aria-labelledby="nested-list-subheader"
-                    subheader={
-                        <ListSubheader component="div" id="nested-list-subheader">
-                            Concepts
-                        </ListSubheader>
-                    }
                 >
                     {concepts}
 

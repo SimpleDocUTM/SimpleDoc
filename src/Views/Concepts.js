@@ -8,6 +8,7 @@ class ContributionPage extends React.Component {
         return (
             <div>
                 <ButtonAppBar />
+                <h1>Concepts</h1>
                 <ConceptList />
             </div>
         );
