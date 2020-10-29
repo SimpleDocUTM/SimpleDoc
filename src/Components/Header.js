@@ -6,14 +6,26 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import CreatePage from '../Components/CreatePage';
+//import Contribute from '../Components/Buttons/Contribute';
+import LoginButton from '../Components/Buttons/LoginButton';
 import '../mystyle.module.css';
+
+const mystyle = {
+      color: "#121212",
+      backgroundColor: "#FFFFF",
+      padding: "10px",
+      fontFamily: "Roboto",
+      textAlign: "center",
+      borderBottom: "2px solid #121212",
+     /* display: "inline",*/
+    };
 
 export default function Header(){
     return (
-		<div>
+		<div style={mystyle} >
 			<h1>Simple Doc</h1>
-			<Button color="inherit">Login</Button>
+			<LoginButton />
 		</div>
     )
 }
+

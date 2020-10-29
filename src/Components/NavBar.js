@@ -6,35 +6,33 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import CreatePage from '../Components/CreatePage';
-import '../mystyle.module.css';
+import ContributeButton from '../Components/Buttons/ContributeButton';
+import QuizzesButton from '../Components/Buttons/QuizzesButton';
+import HomeButton from '../Components/Buttons/HomeButton';
+import HelpButton from '../Components/Buttons/HelpButton';
+import ConceptsButton from '../Components/Buttons/ConceptsButton';
+//import '../mystyle.module.css';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: '#121212',
-    
-  },
-  
-  title: {
-    flexGrow: 1,
-  },
-}));
+const mystyles = {
+      color: "#121212",
+      backgroundColor: "#FFFFF",
+
+};
 
 export default function NavBar() {
-  const classes = useStyles();
+ // const classes = useStyles();
 
 
   return (
-    <div className={classes.root}>
+    //<div style={mystyles} className={classes.root}>
+    <div style={mystyles}>
       <AppBar position="static">
         <Toolbar>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Concepts</Button>
-          <Button color="inherit">Quizzes</Button>
-          <Button color="inherit">Contribute</Button>
-          <Button color="inherit">Help</Button>
-          <CreatePage />
+        <HomeButton />
+		<ConceptsButton />
+		<QuizzesButton />  
+		<ContributeButton />
+		<HelpButton />
         </Toolbar>
       </AppBar>
     </div>
