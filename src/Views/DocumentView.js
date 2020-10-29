@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from '../Components/Header';
-import ButtonAppBar from '../Components/NavBar';
+import NavBar from '../Components/NavBar';
 import TextComponent from '../Components/textComponent';
 import Video from '../Components/Video';
 import Container from '@material-ui/core/Container';
 import CodeComponent from '../Components/CodeComponent';
 import Button from '@material-ui/core/Button';
-import styles from '../mystyle.module.css'
+import styles from '../mystyle.module.css';
 import SimpleDocRest from "../api/SimpleDocRest";
 
 class DocumentView extends React.Component {

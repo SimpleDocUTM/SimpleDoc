@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ButtonAppBar from '../Components/NavBar';
+import NavBar from '../Components/NavBar';
 import MultipleChoiceQuestion from "../Components/MultipleChoiceQuestion";
 import SimpleDocRest from "../api/SimpleDocRest";
 import Container from '@material-ui/core/Container';
+import Header from '../Components/Header';
 
 class QuizView extends React.Component {
     constructor(props) {
@@ -32,7 +33,8 @@ class QuizView extends React.Component {
         const { quizQuestions, quizId } = this.state;
         return (
             <div>
-                <ButtonAppBar />
+                <Header />
+		<NavBar />
                 <Container maxWidth="lg">
                     {quizQuestions.map(({ question, quizoption_set, id }) => (
                         <MultipleChoiceQuestion
