@@ -33,31 +33,25 @@ class QuizOption(models.Model):
         return self.text
 
 
-class QuizOptionSubmission(models.Model):
-    question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
-    option = models.ForeignKey(QuizOption, on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return self.question.question
-
-      
 class Concept(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    description = models.CharField(max_length=255)
+    name = models.TextField()
+    category = models.TextField() #CSC108 or CSC148
 
     class Meta:
         ordering = ['created']
 
     def __str__(self):
-        return self.description
+        return self.name
 
 
 class Documentation(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    title = models.TextField() #the name of the concept
+    title = models.TextField()  # the name of the concept
     description = models.TextField()
+    definition = models.TextField()
     difficulty = models.IntegerField(default=0)
-    contributor = models.TextField() 
+    contributor = models.TextField()
     concept = models.ForeignKey(Concept, on_delete=models.CASCADE)
     rating = models.FloatField(default=0)
     # blank = True, null=True makes this field optional. We do not NEED a quiz for every piece of documentation.
@@ -76,19 +70,37 @@ class DocumentationContribution(models.Model):
     documentname = models.TextField()
     definition = models.TextField()
     description = models.TextField()
-    contributorName = models.TextField() #name
-    contributorUtorid = models.TextField() #Utorid
-    contributorStdNum = models.TextField() #student number
-    contributorEmail = models.TextField() #email
-    exampleDescription1 = models.TextField() # example description
-    example1 = models.TextField() #example1
-    exampleDescription2 = models.TextField() # example description
-    example2 = models.TextField() #example2
-    exampleDescription3 = models.TextField() # example description
-    example3 = models.TextField() #example3
+    contributorName = models.TextField()  # name
+    contributorUtorid = models.TextField()  # Utorid
+    contributorStdNum = models.TextField()  # student number
+    contributorEmail = models.TextField()  # email
+    exampleDescription1 = models.TextField()  # example description
+    example1 = models.TextField()  # example1
+    exampleDescription2 = models.TextField()  # example description
+    example2 = models.TextField()  # example2
+    exampleDescription3 = models.TextField()  # example description
+    example3 = models.TextField()  # example3
 
     def __str__(self):
         return self.documentname
+
+
+class DocumentationVideo(models.Model):
+    documentation = models.ForeignKey(Documentation, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    url = models.URLField()
+
+    class Meta:
+        ordering = ['id']
+
+    def __str__(self):
+        return self.title
+
+
+class DocumentationExample(models.Model):
+    documentation = models.ForeignKey(Documentation, on_delete=models.CASCADE)
+    description = models.TextField()
+    code = models.TextField()
 
 
 class User(AbstractUser):
@@ -118,12 +130,12 @@ class QuizOptionSubmission(models.Model):
 
     def __str__(self):
         return self.question.question
-      
+
 
 class SuggestedDocumentation(models.Model):
-	user=models.ForeignKey(User, on_delete=models.CASCADE)
-	documentation=models.ForeignKey(Documentation, on_delete=models.CASCADE)
-	is_active = models.BooleanField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    documentation = models.ForeignKey(Documentation, on_delete=models.CASCADE)
+    is_active = models.BooleanField()
 
-	def __str__(self):
-		return self.documenation_id
+    def __str__(self):
+        return self.documenation_id
