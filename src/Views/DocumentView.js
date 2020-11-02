@@ -1,11 +1,12 @@
 import React from 'react';
-import ButtonAppBar from '../Components/SampleNav';
+import Header from '../Components/Header';
+import NavBar from '../Components/NavBar';
 import TextComponent from '../Components/textComponent';
 import Video from '../Components/Video';
 import Container from '@material-ui/core/Container';
 import CodeComponent from '../Components/CodeComponent';
 import Button from '@material-ui/core/Button';
-import styles from '../mystyle.module.css'
+import styles from '../mystyle.module.css';
 import SimpleDocRest from "../api/SimpleDocRest";
 
 class DocumentView extends React.Component {
@@ -48,7 +49,8 @@ class DocumentView extends React.Component {
         const { docTitle, docId, docDescription, docAuthor, docDate, videos, codes, docDefinition } = this.state;
         return (
             <div>
-                <ButtonAppBar />
+		<Header />
+                <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
                     <h1 className={styles.header}>

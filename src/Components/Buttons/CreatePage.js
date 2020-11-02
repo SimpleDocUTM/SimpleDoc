@@ -20,9 +20,9 @@ class CreatePage extends React.Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <Button style={{ margin: "20px" }} variant="contained" color="primary" onClick={this.setRedirect}>Create a new page</Button>
+                <Button style={{ margin: "20px" }} color="primary" onClick={this.setRedirect}>Create a new page</Button>
             </div>
         )
     }
 }
-export default CreatePage
+export default Contribute
