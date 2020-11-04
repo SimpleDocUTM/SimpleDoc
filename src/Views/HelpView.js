@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
 import Container from '@material-ui/core/Container';
-
+import ContactForm from '../Components/ContactForm';
 class HelpView extends React.Component {
 
 
@@ -14,9 +14,9 @@ class HelpView extends React.Component {
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
+			<ContactForm />
 
-
-</Container>
+		</Container>
             </div>
 
 
