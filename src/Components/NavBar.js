@@ -14,13 +14,13 @@ import ConceptsButton from '../Components/Buttons/ConceptsButton';
 //import '../mystyle.module.css';
 
 const mystyles = {
-      color: "#121212",
-      backgroundColor: "#FFFFF",
+  color: "#121212",
+  backgroundColor: "#FFFFF",
 
 };
 
 export default function NavBar() {
- // const classes = useStyles();
+  // const classes = useStyles();
 
 
   return (
@@ -28,11 +28,11 @@ export default function NavBar() {
     <div style={mystyles}>
       <AppBar position="static">
         <Toolbar>
-        <HomeButton />
-		<ConceptsButton />
-		<QuizzesButton />  
-		<ContributeButton />
-		<HelpButton />
+          <HomeButton />
+          <ConceptsButton />
+          <QuizzesButton />
+          <ContributeButton />
+          <HelpButton />
         </Toolbar>
       </AppBar>
     </div>

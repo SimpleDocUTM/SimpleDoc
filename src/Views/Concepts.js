@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonAppBar from '../Components/SampleNav';
+import ButtonAppBar from '../Components/NavBar';
 import ConceptList from '../Components/ConceptList'
 
 class ContributionPage extends React.Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import SimpleDocRest from "../api/SimpleDocRest";
 import { List, ListItem, ListItemText, ListSubheader } from '@material-ui/core/';
 import DocumentList from './DocumentList'
 
@@ -13,7 +13,7 @@ export class ConceptList extends Component {
     }
 
     componentDidMount() {
-        axios.get('simpledoc.utm.utoronto.ca:8000/api/concepts/').then((res) => {
+        SimpleDocRest.get(`concepts/`).then((res) => {
             console.log("Concepts: ")
             console.log(res.data)
             this.setState({
