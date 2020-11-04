@@ -8,7 +8,7 @@ export class ConceptList extends Component {
     constructor() {
         super()
         this.state = {
-            concepts: [{ created: "2020-10-22", description: "Recursion", id: 0 }, { created: "2020-10-21", description: "Trees", id: 1 }]
+            concepts: []
         }
     }
 
@@ -26,7 +26,7 @@ export class ConceptList extends Component {
         var concepts = [];
         for (var i = 0; i < this.state.concepts.length; i++) {
             concepts.push(<ListItem button key={i}>
-                <ListItemText primary={this.state.concepts[i]["description"]} />
+                <ListItemText primary={this.state.concepts[i]["name"]} />
                 <DocumentList concept={this.state.concepts[i]["id"]} />
             </ListItem>);
         }
