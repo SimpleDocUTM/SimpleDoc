@@ -7,6 +7,7 @@ import Login from './Views/Login';
 import DocumentView from './Views/DocumentView'
 import QuizView from './Views/QuizView'
 import ContributionPage from './Views/ContributionPage'
+import QuizzesPage from './Views/QuizzesPage'
 
 class App extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class App extends React.Component {
             <Route exact path='/DocumentView' component={DocumentView} />
             <Route exact path='/quiz' component={QuizView} />
             <Route exact path='/ContributionPage' component={ContributionPage} />
-
+            <Route exact path='/QuizzesPage' component={QuizzesPage} />
           </Switch>
         </BrowserRouter>
 
