@@ -17,9 +17,14 @@ class QuizzesPage extends React.Component {
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
+			<h1 className={styles.header}>
+                        CSC108
+                    	</h1>
+			<h1 className={styles.header}>
+                        CSC148 
+                        </h1>
 
-
-</Container>
+		</Container>
             </div>
 
 
