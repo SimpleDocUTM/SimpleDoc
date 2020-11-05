@@ -13,7 +13,7 @@ class QuizzesPage extends React.Component {
     }
 
     fetchQuiz = async () => {
-        SimpleDocRest.get(`/quizzes`)
+        SimpleDocRest.get(`/quizzes/`)
             .then((result) => {
                 this.setState({
                     quizTitle: result.data,
