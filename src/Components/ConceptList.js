@@ -23,10 +23,18 @@ export class ConceptList extends Component {
     }
 
     render() {
+
+        const ListItemStyle = {
+            padding: "5px",
+            margin: "120px 50px",
+            maxWidth: "100px",
+            float: "left"
+        }
+
         var concepts = [];
         for (var i = 0; i < this.state.concepts.length; i++) {
             concepts.push(<ListItem button key={i}>
-                <ListItemText primary={this.state.concepts[i]["name"]} />
+                <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
                 <DocumentList concept={this.state.concepts[i]["id"]} />
             </ListItem>);
         }
