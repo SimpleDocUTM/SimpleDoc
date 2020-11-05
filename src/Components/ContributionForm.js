@@ -7,6 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
 import ListSubheader from '@material-ui/core/ListSubheader';
+import AlertDialog from "./AlertDialog";
 
 
 
@@ -389,7 +390,7 @@ class ContributionForm extends React.Component {
             />
           </div>
 
-          <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
+          <AlertDialog />
         </form>
       </div >
       //  marginLeft: "50ch", 
@@ -398,6 +399,7 @@ class ContributionForm extends React.Component {
 
 }
 
+// <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
 
 ContributionForm.propTypes = {
 

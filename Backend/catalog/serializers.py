@@ -91,7 +91,7 @@ class UserSerializer(serializers.ModelSerializer):
 class DocumentationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Documentation
-        fields = ['id', 'title']
+        fields = '__all__'
 
 
 class DocumentationVideoSerializer(serializers.ModelSerializer):
