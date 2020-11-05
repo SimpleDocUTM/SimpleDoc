@@ -26,14 +26,9 @@ class QuizCard extends React.Component{
         return(
             <div>
                 <Card style={mystyle.cardcomponent}>
-					<CardHeader
-						title="Concept Name"
-						//{title}
-        							//	subheader="September 14, 2016"
-      				/>
-                    <CardContent style={mystyle.cardcontent}>
-                        {title}
-                    </CardContent>
+      				     <CardContent style={mystyle.cardcontent}>
+        			                {this.props.title}
+                	            </CardContent>
 					<CardActions>
         				<Button size="small">Take Quiz</Button>
       				</CardActions>
