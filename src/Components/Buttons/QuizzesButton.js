@@ -13,7 +13,7 @@ class QuizzesButton extends React.Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/DocumentView' />
+            return <Redirect to='/QuizzesPage' />
         }
     }
     render() {
