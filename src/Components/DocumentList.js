@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SimpleDocRest from "../api/SimpleDocRest";
+import { Redirect } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import { List, ListItem, ListItemText, ListSubheader, Collapse } from '@material-ui/core/';
 
 export class DocumentList extends Component {
@@ -8,12 +10,14 @@ export class DocumentList extends Component {
         super(props)
         this.state = {
             documents: [],
-            concept: this.props.concept //The ID of the concept
+            concept: this.props.concept, //The ID of the concept
+            redirect: false,
+            id: 0
         }
     }
 
     componentDidMount() {
-        SimpleDocRest.get('documents/').then((res) => {
+        SimpleDocRest.get('/documents/').then((res) => {
             console.log("Documents: ")
             console.log(res.data)
             this.setState({
@@ -22,8 +26,17 @@ export class DocumentList extends Component {
         })
     }
 
-    render() {
+    // setRedirect(id) {
+    //     console.log("pressed")
+    //     this.setState({
+    //         redirect: true,
+    //         id: id
+    //     })
 
+    // }
+
+
+    render() {
         const ListItemStyle = {
             padding: "5px",
             margin: "120px 50px",
@@ -31,21 +44,17 @@ export class DocumentList extends Component {
         }
 
         var documents = [];
-        console.log("?????")
-        console.log(this.state.documents)
         for (var i = 0; i < this.state.documents.length; i++) {
             if (this.state.concept == this.state.documents[i]["concept"]) {
-                console.log(this.state.concept, this.state.documents[i]["concept"])
-                documents.push(<ListItem button key={i}>
+                var id = this.state.documents[i]["id"];
+                documents.push(<ListItem button key={i} onClick={() => this.props.history.push(`/DocumentView/${id}`)}>
                     <ListItemText style={ListItemStyle} primary={this.state.documents[i]["title"]} secondary={this.state.documents[i]["description"]} />
-                    {/* <ListItemText primary={" Contributor: " + this.state.documents[i]["contributor"]} />
-                <ListItemText primary={" Article Rating: " + this.state.documents[i]["rating"]} /> */}
                 </ListItem>);
             }
         }
         return (
             <div>
-                {/* <Collapse> */}
+                {/* {this.renderRedirect()} */}
                 <List
                     component="nav"
                     aria-labelledby="nested-list-subheader"
@@ -63,4 +72,4 @@ export class DocumentList extends Component {
     }
 }
 
-export default DocumentList
+export default withRouter(DocumentList)

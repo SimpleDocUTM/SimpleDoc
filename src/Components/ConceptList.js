@@ -35,7 +35,7 @@ export class ConceptList extends Component {
         for (var i = 0; i < this.state.concepts.length; i++) {
             concepts.push(<ListItem button key={i}>
                 <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
-                <DocumentList callBack={this.props.callBack} concept={this.state.concepts[i]["id"]} />
+                <DocumentList concept={this.state.concepts[i]["id"]} />
             </ListItem>);
         }
         return (

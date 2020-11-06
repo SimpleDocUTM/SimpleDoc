@@ -16,7 +16,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route exact path='/' component={Login} />
-            <Route exact path='/DocumentView' component={DocumentView} />
+            <Route exact path='/DocumentView/:id' component={DocumentView} />
             <Route exact path='/quiz' component={QuizView} />
             <Route exact path='/ContributionPage' component={ContributionPage} />
             <Route exact path='/Concepts' component={Concepts} />
