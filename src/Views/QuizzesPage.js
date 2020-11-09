@@ -9,12 +9,14 @@ import QuizCard from '../Components/QuizCard';
 class QuizzesPage extends React.Component {
     constructor(props) {     //props = arguments, states = attributes
         super(props);
-        this.state = { quizzes:[] };
+        this.state = { quizzes: [] };
     }
 
     fetchQuiz = async () => {
         SimpleDocRest.get(`/quizzes/`)
             .then((result) => {
+                console.log("quizzes")
+                console.log(result.data)
                 this.setState({
                     quizzes: result.data,
                 });
@@ -29,20 +31,20 @@ class QuizzesPage extends React.Component {
     }
 
     render() {
-        const { quizzes} = this.state;
-        
-	return (
+        const { quizzes } = this.state;
+
+        return (
             <div>
-		<Header />
+                <Header />
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
-			<h1 className={styles.header}>
-                    	</h1>a
-			{quizzes.map(({ title, id}) => (  //need to map ids
-				<QuizCard title={title} id={id}/>
-		        ))}
-		</Container>
+                    <h1 className={styles.header}>
+                    </h1>
+                    {quizzes.map(({ title, id }) => (  //need to map ids
+                        <QuizCard title={title} id={id} />
+                    ))}
+                </Container>
             </div>
 
 
