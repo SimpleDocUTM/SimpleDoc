@@ -5,8 +5,8 @@ import DocumentList from './DocumentList'
 
 export class ConceptList extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             concepts: []
         }
@@ -33,10 +33,12 @@ export class ConceptList extends Component {
 
         var concepts = [];
         for (var i = 0; i < this.state.concepts.length; i++) {
-            concepts.push(<ListItem button key={i}>
-                <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
-                <DocumentList concept={this.state.concepts[i]["id"]} />
-            </ListItem>);
+            if (this.props.category && this.state.concepts[i].category == this.props.category) {
+                concepts.push(<ListItem button key={i}>
+                    <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
+                    <DocumentList concept={this.state.concepts[i]["id"]} />
+                </ListItem>);
+            }
         }
         return (
             <div>
