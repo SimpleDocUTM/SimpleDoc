@@ -16,7 +16,7 @@ class QuizzesPage extends React.Component {
         SimpleDocRest.get(`/quizzes/`)
             .then((result) => {
                 this.setState({
-                    quizTitle: result.data,
+                    quizzes: result.data,
                 });
             })
             .catch((error) => {
@@ -38,9 +38,9 @@ class QuizzesPage extends React.Component {
                 {/* place holder */}
                 <Container maxWidth="lg">
 			<h1 className={styles.header}>
-                    	</h1>
-			{quizzes.map(({ title}) => (
-				<QuizCard title={title}/>
+                    	</h1>a
+			{quizzes.map(({ title, id}) => (  //need to map ids
+				<QuizCard title={title} id={id}/>
 		        ))}
 		</Container>
             </div>
