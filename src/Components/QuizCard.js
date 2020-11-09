@@ -8,38 +8,38 @@ import Button from '@material-ui/core/Button';
 import PropTypes from "prop-types";
 
 
-class QuizCard extends React.Component{
+class QuizCard extends React.Component {
 	constructor(props) {
-        super(props);
+		super(props);
 	}
-	
-    render(){
+
+	render() {
 		const mystyle = {
-			cardcomponent:{
+			cardcomponent: {
 				minWidth: 275,
 			},
-			cardcontent:{
+			cardcontent: {
 				fontSize: 14,
 			},
 		}
-		const { title} = this.props;
-        return(
-            <div>
-                <Card style={mystyle.cardcomponent}>
-      				     <CardContent style={mystyle.cardcontent}>
-        			                {this.props.title}
-                	            </CardContent>
+		const { title } = this.props;
+		return (
+			<div>
+				<Card style={mystyle.cardcomponent}>
+					<CardContent style={mystyle.cardcontent}>
+						{this.props.title}
+					</CardContent>
 					<CardActions>
-        				<Button size="small" onClick={() => this.props.history.push(/quiz/${id})}>Take Quiz</Button>
-      				</CardActions>
-                </Card>
-            </div>
-        );
-    }
+						<Button size="small" onClick={() => this.props.history.push(`/quiz/${id})`}>Take Quiz</Button>
+					</CardActions>
+				</Card>
+			</div>
+		);
+	}
 }
 
 QuizCard.propTypes = {
-    title: PropTypes.string,
+	title: PropTypes.string,
 };
 
 export default QuizCard;
