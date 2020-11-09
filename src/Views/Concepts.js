@@ -1,8 +1,9 @@
 import React from 'react';
 import ButtonAppBar from '../Components/NavBar';
 import ConceptList from '../Components/ConceptList'
+import DocumentView from '../Views/DocumentView'
 
-class ContributionPage extends React.Component {
+class Concept extends React.Component {
 
     render() {
         return (
@@ -16,4 +17,4 @@ class ContributionPage extends React.Component {
 
 }
 
-export default ContributionPage
+export default Concept

@@ -13,16 +13,18 @@ class DocumentView extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = { docTitle: "", docId: "", docDescription: "", consid: 1, docAuthor: "", docDate: "", videos: [], codes: [], docDefinition: "", };
+        this.state = {
+            docTitle: "", docId: this.props.match.params.id, docDescription: "", consid: 1, docAuthor: "", docDate: "", videos: [], codes: [], docDefinition: "",
+        };
     }
     toQuiz = async (e) => {
         this.props.history.push('/quiz')
     }
 
     fetchDoc = async () => {
-        SimpleDocRest.get(`/documents/1/`)
+        SimpleDocRest.get(`/documents/` + this.state.docId + `/`) //Id of the documentation should be passed in
             .then((result) => {
+                console.log(result.data)
                 this.setState({
                     docTitle: result.data.title,
                     dodId: result.data.id,
@@ -49,8 +51,8 @@ class DocumentView extends React.Component {
         const { docTitle, docId, docDescription, docAuthor, docDate, videos, codes, docDefinition } = this.state;
         return (
             <div>
-		<Header />
                 <NavBar />
+                <Header />
                 {/* place holder */}
                 <Container maxWidth="lg">
                     <h1 className={styles.header}>

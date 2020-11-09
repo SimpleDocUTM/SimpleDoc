@@ -13,7 +13,7 @@ export class ConceptList extends Component {
     }
 
     componentDidMount() {
-        SimpleDocRest.get(`concepts/`).then((res) => {
+        SimpleDocRest.get('concepts/').then((res) => {
             console.log("Concepts: ")
             console.log(res.data)
             this.setState({
