@@ -30,7 +30,7 @@ class QuizCard extends React.Component{
         			                {this.props.title}
                 	            </CardContent>
 					<CardActions>
-        				<Button size="small">Take Quiz</Button>
+        				<Button size="small" onClick={() => this.props.history.push(/quiz/${id})}>Take Quiz</Button>
       				</CardActions>
                 </Card>
             </div>
