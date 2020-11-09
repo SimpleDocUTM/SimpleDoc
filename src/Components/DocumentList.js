@@ -26,15 +26,6 @@ export class DocumentList extends Component {
         })
     }
 
-    // setRedirect(id) {
-    //     console.log("pressed")
-    //     this.setState({
-    //         redirect: true,
-    //         id: id
-    //     })
-
-    // }
-
 
     render() {
         const ListItemStyle = {

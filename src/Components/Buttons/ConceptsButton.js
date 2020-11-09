@@ -13,7 +13,7 @@ class ConceptsButton extends React.Component {
     }
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='/Concepts' />
+            return <Redirect to='/Concepts/general' />
         }
     }
     render() {
