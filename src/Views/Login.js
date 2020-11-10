@@ -6,22 +6,30 @@ import NavBar from '../Components/NavBar';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 
-class Login extends React.Component{
-    Validation = async (e) =>{
+class Login extends React.Component {
+    Validation = async (e) => {
         this.props.history.push('/DocumentView')
     }
-    render(){
-        return(<div>
-		<Header />
-		<NavBar />
+    render() {
+        const inputStyle = { padding: "10px", margin: "5px" }
+        return (<div>
+            <Header />
+            <NavBar />
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <center>
                 <form>
-                    <input type="text" id="username"/>
-                    <input type="password" id="password"/>
-                    <input type="submit" onClick={this.Validation}/>
-                    
+                    <input style={inputStyle} type="text" id="username" />
+                    <input style={inputStyle} type="password" id="password" />
+                    <input style={inputStyle} type="submit" onClick={this.Validation} />
+
                 </form>
+            </center>
         </div>
-            );
+        );
     }
 }
 

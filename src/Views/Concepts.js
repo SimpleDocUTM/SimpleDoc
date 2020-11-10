@@ -10,7 +10,7 @@ class Concept extends React.Component {
     }
 
     render() {
-        var list = <ConceptList />
+        var list = <ConceptList category={"general"} />
         var category = this.props.match.params.category;
         if (category != "general") {
             list = <ConceptList category={category} />
