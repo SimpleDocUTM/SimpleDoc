@@ -49,9 +49,9 @@ class ContributionForm extends React.Component {
         for (const concept of this.state.data) {
           console.log(concept)
           if (concept.category == "CSC108") {
-            this.setState((state) => ( { list108: [state.list108, concept] } ))
+            this.setState((state) => ( { list108: [...state.list108, concept] } ))
           } else {
-            this.setState((state) => ( { list148: [state.list148, concept] } ))
+            this.setState((state) => ( { list148: [...state.list148, concept] } ))
           }
         }
       })
