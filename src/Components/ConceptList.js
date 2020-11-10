@@ -33,7 +33,12 @@ export class ConceptList extends Component {
 
         var concepts = [];
         for (var i = 0; i < this.state.concepts.length; i++) {
-            if (this.props.category && this.state.concepts[i].category == this.props.category) {
+            if (this.state.concepts[i].category == this.props.category) {
+                concepts.push(<ListItem button key={i}>
+                    <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
+                    <DocumentList concept={this.state.concepts[i]["id"]} />
+                </ListItem>);
+            } else if (this.props.category == 'general') {
                 concepts.push(<ListItem button key={i}>
                     <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
                     <DocumentList concept={this.state.concepts[i]["id"]} />
