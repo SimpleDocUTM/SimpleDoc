@@ -4,6 +4,7 @@ import React from 'react';
 // import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from './Views/Login';
+import SignIn from './Views/NewLogin';
 import DocumentView from './Views/DocumentView'
 import QuizView from './Views/QuizView'
 import ContributionPage from './Views/ContributionPage'
@@ -16,7 +17,8 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Login} />
+            <Route exact path='/' component={SignIn} />
+            <Route exact path='/Login' component={SignIn} />
             <Route exact path='/DocumentView/:id' component={DocumentView} />
             <Route exact path='/quiz/:id' component={QuizView} />
             <Route exact path='/ContributionPage' component={ContributionPage} />
@@ -33,5 +35,6 @@ class App extends React.Component {
 
 }
 
+//<Route exact path='/' component={Login} />
 
 export default App;
