@@ -2,6 +2,7 @@ import React from 'react';
 import ButtonAppBar from '../Components/NavBar';
 import ConceptList from '../Components/ConceptList'
 import DocumentView from '../Views/DocumentView'
+import Header from '../Components/Header';
 
 class Concept extends React.Component {
 
@@ -17,6 +18,7 @@ class Concept extends React.Component {
         }
         return (
             <div>
+                <Header />
                 <ButtonAppBar />
                 <h1>Concepts</h1>
                 {list}
