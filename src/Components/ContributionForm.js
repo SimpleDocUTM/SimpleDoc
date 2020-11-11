@@ -272,7 +272,7 @@ class ContributionForm extends React.Component {
               multiline
               value={this.state.documentname}
               onChange={this.handleOnDocNameChange.bind(this)}
-              placeholder="Enter the Documentation Name"
+              placeholder="Enter the Title of the documentation"
               variant="filled"
             />
           </div>
@@ -286,7 +286,7 @@ class ContributionForm extends React.Component {
               value={this.state.definition}
               onChange={this.handleOnDefChange.bind(this)}
               rows={6}
-              placeholder="Enter the definition"
+              placeholder="What's the official definition of this concept"
               variant="filled"
             />
           </div>
@@ -300,12 +300,12 @@ class ContributionForm extends React.Component {
               value={this.state.description}
               onChange={this.handleOnDescriptionChange.bind(this)}
               rows={6}
-              placeholder="Enter the description"
+              placeholder="Please explain in words that new programmers would understand"
               variant="filled"
             />
           </div>
           <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Examples
+            Code Examples
                   </h2>
           <div>
             <TextField
