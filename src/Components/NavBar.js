@@ -28,7 +28,7 @@ export default function NavBar() {
     <div style={mystyles}>
       <AppBar position="static">
         <Toolbar>
-          <HomeButton />
+          {/* <HomeButton /> */}
           <ConceptsButton />
           <QuizzesButton />
           <ContributeButton />
