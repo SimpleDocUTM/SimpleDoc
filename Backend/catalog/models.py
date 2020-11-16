@@ -111,20 +111,20 @@ class User(AbstractUser):
         return self.username
 
 
-class QuizUser(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    result = models.DecimalField(default=0, decimal_places=2, max_digits=6)
-    has_submitted = models.BooleanField(default=False)
-    date_submitted = models.DateTimeField(null=True)
-    created = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.username
+# class QuizUser(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+#     result = models.DecimalField(default=0, decimal_places=2, max_digits=6)
+#     has_submitted = models.BooleanField(default=False)
+#     date_submitted = models.DateTimeField(null=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#
+#     def __str__(self):
+#         return self.user.username
 
 
 class QuizOptionSubmission(models.Model):
-    quiz_user = models.ForeignKey(QuizUser, on_delete=models.CASCADE)
+    # quiz_user = models.ForeignKey(QuizUser, on_delete=models.CASCADE)
     question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
     option = models.ForeignKey(QuizOption, on_delete=models.CASCADE, null=True)
 
