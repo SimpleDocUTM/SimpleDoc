@@ -63,11 +63,11 @@ class DocumentView extends React.Component {
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
-                    <TextComponent className={styles.paragraph} text={docDefinition} />
+                    <TextComponent className={styles.paragraph} text={docDefinition.replace("\r", "\n")} />
                     <h2>
                         Description
                 </h2>
-                    <TextComponent text={docDescription} />
+                    <TextComponent text={docDescription.replace("\r", "\n")} />
                     <Container maxWidth="md">
                         {videos.map(({ url, title }) => (
                             <Video
