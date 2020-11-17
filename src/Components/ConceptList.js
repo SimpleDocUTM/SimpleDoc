@@ -12,10 +12,8 @@ export class ConceptList extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         SimpleDocRest.get('concepts/').then((res) => {
-            console.log("Concepts: ")
-            console.log(res.data)
             this.setState({
                 concepts: res.data
             })

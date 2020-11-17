@@ -56,7 +56,7 @@ export default function SignIn() {
 
 
     function Login() {
-        history.push("/DocumentView/1");
+        history.push("/Concepts/general");
     }
 
     function VisitHome() {

@@ -24,7 +24,6 @@ class DocumentView extends React.Component {
     fetchDoc = async () => {
         SimpleDocRest.get(`/documents/` + this.state.docId + `/`) //Id of the documentation should be passed in
             .then((result) => {
-                console.log(result.data)
                 this.setState({
                     docTitle: result.data.title,
                     dodId: result.data.id,

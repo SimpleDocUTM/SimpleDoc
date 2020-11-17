@@ -8,7 +8,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 class Login extends React.Component {
     Validation = async (e) => {
-        this.props.history.push('/DocumentView')
+        this.props.history.push('/Concepts/General')
     }
     render() {
         const inputStyle = { padding: "10px", margin: "5px" }

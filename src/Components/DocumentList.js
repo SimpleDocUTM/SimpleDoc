@@ -16,10 +16,8 @@ export class DocumentList extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         SimpleDocRest.get('/documents/').then((res) => {
-            console.log("Documents: ")
-            console.log(res.data)
             this.setState({
                 documents: res.data
             })

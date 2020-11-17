@@ -37,17 +37,14 @@ class ContributionForm extends React.Component {
   }
 
   componentDidMount() {
-    console.log("fetching concepts")
     SimpleDocRest.get(`concepts/`)
       .then((result) => {
-        console.log(result.data)
         this.setState(() => {
           return {
             data: result.data
           };
         });
         for (const concept of this.state.data) {
-          console.log(concept)
           if (concept.category == "CSC108") {
             this.setState((state) => ( { list108: [...state.list108, concept] } ))
           } else {
@@ -136,7 +133,7 @@ class ContributionForm extends React.Component {
       example3: this.state.example3
     })
       .then(function (response) {
-        console.log(response);
+	alert("Your submission has successfully been submitted! Thank you!")
       }).then(function (error) {
         console.log(error);
       });
@@ -393,14 +390,15 @@ class ContributionForm extends React.Component {
             />
           </div>
 
-          <AlertDialog />
-        </form>
+        <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
+	</form>
       </div >
       //  marginLeft: "50ch", 
     );
   }
 
 }
+         // <AlertDialog />
 
 // <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
 
