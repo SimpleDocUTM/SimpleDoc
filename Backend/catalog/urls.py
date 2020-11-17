@@ -1,11 +1,11 @@
-from django.urls import include, path
-from .views import QuizListAPI, QuizDetailAPI, QuizOptionSubmissionAPI, QuizSubmissionAPI, DocumentationListAPI, DocumentationAPI, ConceptListAPI, UserInfoAPI, DocumentationContributeAPI, SuggestedDocumentationListAPI
+from django.urls import path
+from .views import QuizListAPI, QuizDetailAPI, QuizOptionSubmissionAPI, DocumentationListAPI, DocumentationAPI, ConceptListAPI, UserInfoAPI, DocumentationContributeAPI, SuggestedDocumentationListAPI
 
 urlpatterns = [
     path('quizzes/', QuizListAPI.as_view()),
     path('quizzes/<int:pk>/', QuizDetailAPI.as_view()),
     path('quizzes/save-answer/', QuizOptionSubmissionAPI.as_view()),
-    path('quizzes/submit/', QuizSubmissionAPI.as_view()),
+    # path('quizzes/submit/', QuizSubmissionAPI.as_view()),
     path('user/<pk>/', UserInfoAPI.as_view()),
     path('documents/', DocumentationListAPI.as_view()),
     path('documents/<int:pk>/', DocumentationAPI.as_view()),

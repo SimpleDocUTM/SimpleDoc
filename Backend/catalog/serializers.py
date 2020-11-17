@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, QuizUser, Documentation, DocumentationExample, DocumentationVideo, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, DocumentationExample, DocumentationVideo, DocumentationContribution, Concept, User, SuggestedDocumentation
 
 
 class QuizListSerializer(serializers.ModelSerializer):
@@ -55,30 +55,30 @@ class QuizOptionSubmissionSerializer(serializers.ModelSerializer):
         return obj.option.is_correct
 
 
-class QuizUserSerializer(serializers.ModelSerializer):
-    quizoptionsubmission_set = QuizOptionSubmissionSerializer(many=True)
+# class QuizUserSerializer(serializers.ModelSerializer):
+#     quizoptionsubmission_set = QuizOptionSubmissionSerializer(many=True)
+#
+#     class Meta:
+#         model = QuizUser
+#         fields = '__all__'
 
-    class Meta:
-        model = QuizUser
-        fields = '__all__'
 
-
-class QuizSubmissionSerializer(serializers.ModelSerializer):
-    quizuser_set = serializers.SerializerMethodField()
-    quizquestion_set = QuizQuestionSerializer(many=True)
-
-    class Meta:
-        model = Quiz
-        fields = '__all__'
-
-    def get_quizuser_set(self, obj):
-        try:
-            quiz_user = QuizUser.objects.get(
-                user=self.context['request'].user, quiz=obj)
-            serializer = QuizUserSerializer(quiz_user)
-            return serializer.data
-        except:
-            return None
+# class QuizSubmissionSerializer(serializers.ModelSerializer):
+#     quizuser_set = serializers.SerializerMethodField()
+#     quizquestion_set = QuizQuestionSerializer(many=True)
+#
+#     class Meta:
+#         model = Quiz
+#         fields = '__all__'
+#
+#     def get_quizuser_set(self, obj):
+#         try:
+#             quiz_user = QuizUser.objects.get(
+#                 user=self.context['request'].user, quiz=obj)
+#             serializer = QuizUserSerializer(quiz_user)
+#             return serializer.data
+#         except:
+#             return None
 
 
 class UserSerializer(serializers.ModelSerializer):
