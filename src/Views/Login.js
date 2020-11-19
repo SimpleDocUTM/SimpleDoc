@@ -3,7 +3,7 @@ import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
 // import logo from './logo.svg';
 // import './App.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, withRouter } from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -35,4 +35,4 @@ class Login extends React.Component {
 
 
 
-export default Login;
+export default withRouter(Login);

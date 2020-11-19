@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import SimpleDocRest from "../api/SimpleDocRest";
-import { Redirect } from 'react-router-dom';
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from 'react-router-dom';
 import { List, ListItem, ListItemText, ListSubheader, Collapse } from '@material-ui/core/';
+
+import SimpleDocRest from "../api/SimpleDocRest";
 
 export class DocumentList extends Component {
 
