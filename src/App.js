@@ -17,7 +17,7 @@ class App extends React.Component {
       <div>
         <HashRouter>
           <Switch>
-            <Route exact path='/' component={SignIn} />
+            <Route exact path='/' component={Concepts} />
             <Route exact path='/Login' component={SignIn} />
             <Route exact path='/DocumentView/:id' component={DocumentView} />
             <Route exact path='/quiz/:id' component={QuizView} />
