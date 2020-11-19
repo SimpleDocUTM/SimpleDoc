@@ -1,1 +1,1 @@
-export const LOCAL_API_URL = "http://localhost:8000/api"
+export const LOCAL_API_URL = "https://simpledoc.utm.utoronto.ca:8000/api"
