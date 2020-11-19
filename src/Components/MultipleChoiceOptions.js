@@ -19,8 +19,6 @@ class MultipleChoiceOptions extends React.Component {
     const { options } = this.props;
     const { isCorrect } = this.state;
 
-    console.log(isCorrect);
-
     return (
       <FormControl component="fieldset">
         {options.map(({ id, text }) => (

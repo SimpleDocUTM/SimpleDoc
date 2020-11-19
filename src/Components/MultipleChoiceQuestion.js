@@ -15,7 +15,6 @@ class MultipleChoiceQuestion extends React.Component {
     }
 
     onOptionChange = (event, value) => {
-        console.log(event);
         this.setState({ selected: parseInt(value) });
     };
 
