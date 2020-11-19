@@ -25,6 +25,8 @@ class DocumentationAPI(generics.RetrieveAPIView):
 class ConceptListAPI(generics.ListAPIView):
     queryset = Concept.objects.all()
     serializer_class = ConceptListSerializer
+
+
 class DocumentationContributeAPI(generics.CreateAPIView):
     serializer_class = DocumentationContributionSerializer
 
@@ -116,7 +118,6 @@ class DocumentationContributeAPI(generics.CreateAPIView):
             return Response(self.get_serializer(obj).data)
 
 
-
 class SuggestedDocumentationListAPI(generics.ListAPIView):
     queryset = SuggestedDocumentation.objects.all()
     serializer_class = SuggestedDocumentationSerializer
@@ -151,14 +152,14 @@ class QuizDetailAPI(generics.RetrieveAPIView):
         quiz = get_object_or_404(Quiz, id=quiz_id)
 
         # If a user is getting a quiz we want to create quiz user in the db.
-        quiz_user, created = QuizUser.objects.get_or_create(
-            user=self.request.user, quiz=quiz)
+        # quiz_user, created = QuizUser.objects.get_or_create(
+        #     user=self.request.user, quiz=quiz)
 
-        if created:
-            # Create a user option submission (leaving the answers blank, but filling in the question and user) for every question.
-            for question in QuizQuestion.objects.filter(quiz=quiz):
-                QuizOptionSubmission.objects.create(
-                    question=question, quiz_user=quiz_user)
+        # if created:
+        #     # Create a user option submission (leaving the answers blank, but filling in the question and user) for every question.
+        #     for question in QuizQuestion.objects.filter(quiz=quiz):
+        #         QuizOptionSubmission.objects.create(
+        #             question=question, quiz_user=quiz_user)
 
         return Response(self.get_serializer(quiz).data)
 
@@ -189,10 +190,11 @@ class QuizOptionSubmissionAPI(generics.GenericAPIView):
         # quiz_user = get_object_or_404(QuizUser, id=quiz_user_id)
 
         if _is_valid_quiz_option(question, option):
-            obj = QuizOptionSubmission.objects.create(question=question, option=option)
+            obj = QuizOptionSubmission.objects.create(
+                question=question, option=option)
             # obj = get_object_or_404(
             #     QuizOptionSubmission, question=question)
-                # , quiz_user=quiz_user)
+            # , quiz_user=quiz_user)
             return Response(self.get_serializer(obj).data)
         else:
             return Response(

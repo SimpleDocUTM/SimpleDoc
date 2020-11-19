@@ -13,7 +13,8 @@ class QuizView extends React.Component {
     }
 
     fetchQuiz = async () => {
-        SimpleDocRest.get(`/quizzes/${this.state.quizId}/`)
+        console.log(this.props)
+        SimpleDocRest.get(`/quizzes/${this.props.match.params.id}/`)
             .then((result) => {
                 this.setState({
                     quizTitle: result.data.title,
