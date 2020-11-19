@@ -2,7 +2,7 @@ import React from 'react';
 
 // import logo from './logo.svg';
 // import './App.css';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, HashRouter, BrowserRouter } from 'react-router-dom';
 import Login from './Views/Login';
 import SignIn from './Views/NewLogin';
 import DocumentView from './Views/DocumentView'
@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <HashRouter>
           <Switch>
             <Route exact path='/' component={SignIn} />
             <Route exact path='/Login' component={SignIn} />
@@ -26,7 +26,7 @@ class App extends React.Component {
             <Route exact path='/Concepts/:category' component={Concepts} />
 
           </Switch>
-        </BrowserRouter>
+        </HashRouter>
 
       </div>
     );
