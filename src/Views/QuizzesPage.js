@@ -2,9 +2,12 @@ import React from 'react';
 import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
 import Container from '@material-ui/core/Container';
+import { withRouter } from 'react-router-dom';
+
 import styles from '../mystyle.module.css';
 import SimpleDocRest from "../api/SimpleDocRest";
 import QuizCard from '../Components/QuizCard';
+
 
 class QuizzesPage extends React.Component {
     constructor(props) {     //props = arguments, states = attributes
@@ -30,6 +33,7 @@ class QuizzesPage extends React.Component {
 
     render() {
         const { quizzes } = this.state;
+        console.log(quizzes)
 
         return (
             <div>
@@ -51,7 +55,7 @@ class QuizzesPage extends React.Component {
 
 }
 
-export default QuizzesPage
+export default withRouter(QuizzesPage)
 
 
 
