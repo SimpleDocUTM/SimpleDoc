@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Redirect, withRouter } from 'react-router-dom';
+import SimpleDocRest from "../api/SimpleDocRest";
+import { withRouter, Link, Redirect } from "react-router-dom"
 import { List, ListItem, ListItemText, ListSubheader, Collapse } from '@material-ui/core/';
 
 import SimpleDocRest from "../api/SimpleDocRest";
@@ -12,7 +13,8 @@ export class DocumentList extends Component {
             documents: [],
             concept: this.props.concept, //The ID of the concept
             redirect: false,
-            id: 0
+            id: 0,
+            listItems: []
         }
     }
 
@@ -21,26 +23,30 @@ export class DocumentList extends Component {
             this.setState({
                 documents: res.data
             })
+            const ListItemStyle = {
+                padding: "5px",
+                margin: "120px 50px",
+                maxWidth: "500px"
+            }
+            var listItems = [];
+            for (var i = 0; i < this.state.documents.length; i++) {
+                if (this.state.concept == this.state.documents[i]["concept"]) {
+                    var id = this.state.documents[i]["id"];
+                    var l = `/DocumentView/${id}`;
+                    listItems.push(<Link to={l}><ListItem button key={i}>
+                        <ListItemText style={ListItemStyle} primary={this.state.documents[i]["title"]} secondary={this.state.documents[i]["description"].slice(0, 100) + "..."} />
+                    </ListItem>
+                    </Link>);
+                }
+            }
+            this.setState({
+                listItems: listItems
+            })
         })
     }
 
 
     render() {
-        const ListItemStyle = {
-            padding: "5px",
-            margin: "120px 50px",
-            maxWidth: "500px"
-        }
-
-        var documents = [];
-        for (var i = 0; i < this.state.documents.length; i++) {
-            if (this.state.concept == this.state.documents[i]["concept"]) {
-                var id = this.state.documents[i]["id"];
-                documents.push(<ListItem button key={i} onClick={() => this.props.history.push(`/DocumentView/${id}`)}>
-                    <ListItemText style={ListItemStyle} primary={this.state.documents[i]["title"]} secondary={this.state.documents[i]["description"]} />
-                </ListItem>);
-            }
-        }
         return (
             <div>
                 {/* {this.renderRedirect()} */}
@@ -52,7 +58,7 @@ export class DocumentList extends Component {
                         </ListSubheader>
                     }
                 >
-                    {documents}
+                    {this.state.listItems}
 
                 </List>
                 {/* </Collapse> */}
