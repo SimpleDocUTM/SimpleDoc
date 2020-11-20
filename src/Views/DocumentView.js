@@ -52,7 +52,8 @@ class DocumentView extends React.Component {
         const { docTitle, docId, docDescription, docAuthor, docDate, videos, codes, docDefinition } = this.state;
         return (
             <div>
-                <Header />
+
+		        <Header />
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">

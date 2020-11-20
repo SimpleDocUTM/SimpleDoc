@@ -10,6 +10,7 @@ import QuizView from './Views/QuizView'
 import ContributionPage from './Views/ContributionPage'
 import QuizzesPage from './Views/QuizzesPage'
 import Concepts from './Views/Concepts'
+import HelpView from './Views/HelpView'
 
 class App extends React.Component {
   render() {
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Route exact path='/QuizzesPage' component={QuizzesPage} />
             <Route exact path='/Concepts/:category' component={Concepts} />
 
+	    <Route exact path='/HelpView' component={HelpView} />
           </Switch>
         </HashRouter>
 
