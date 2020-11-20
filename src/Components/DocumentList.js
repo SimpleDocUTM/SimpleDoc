@@ -3,8 +3,6 @@ import SimpleDocRest from "../api/SimpleDocRest";
 import { withRouter, Link, Redirect } from "react-router-dom"
 import { List, ListItem, ListItemText, ListSubheader, Collapse } from '@material-ui/core/';
 
-import SimpleDocRest from "../api/SimpleDocRest";
-
 export class DocumentList extends Component {
 
     constructor(props) {
