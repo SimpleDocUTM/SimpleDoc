@@ -12,7 +12,7 @@ class HelpView extends React.Component {
     render() {
         return (
             <div>
-		        <Header />
+                <Header />
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
@@ -29,9 +29,9 @@ class HelpView extends React.Component {
                     many courses. However, most of these activities are focused on students discussing methods of solving problems as opposed to 
                     explaining concepts. Our tool helps fill this gap by allowing students to learn concepts from each other as well in a way 
                     that can be mediated by the instructors.' />
-                    <h1 className={styles.header}>
-                        Frequently Asked Questions
-                    </h1>
+                    {/* <h1 className={styles.header}> */}
+                    {/* Frequently Asked Questions */}
+                    {/* </h1> */}
                     <h1 className={styles.header}>
                         Contact Us
                     </h1>
@@ -39,7 +39,7 @@ class HelpView extends React.Component {
 
 
 
-		        </Container>
+                </Container>
             </div>
         )
     };

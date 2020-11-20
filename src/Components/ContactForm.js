@@ -52,6 +52,7 @@ export default function ContactForm() {
                 <div className="col-8 pt-3 mx-auto">
                     <Button variant="outlined" color="primary" input type="submit" className="btn btn-info" value="Send Message">Send Message</Button>
                 </div>
+                <p> </p>
             </div>
         </form>
     );
