@@ -44,6 +44,9 @@ class MultipleChoiceQuestion extends React.Component {
         // this object will query the id to get the question text
         return (
             <form onSubmit={this.onSubmit}>
+                <p>
+
+                </p>
                 <FormLabel component="legend" color="primary">
                     {question}
                 </FormLabel>
