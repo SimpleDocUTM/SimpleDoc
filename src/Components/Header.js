@@ -6,8 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-//import Contribute from '../Components/Buttons/Contribute';
-import LoginButton from '../Components/Buttons/LoginButton';
 import '../mystyle.module.css';
 
 const mystyle = {
@@ -24,7 +22,6 @@ export default function Header() {
   return (
     <div style={mystyle} >
       <h1 style={{ flexGrow: "1" }}>Simple Doc</h1>
-      <LoginButton />
     </div >
   )
 }

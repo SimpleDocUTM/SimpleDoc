@@ -27,6 +27,7 @@ export class DocumentList extends Component {
                 maxWidth: "500px"
             }
             var listItems = [];
+            // Replace if statement with a fetch by foreign key
             for (var i = 0; i < this.state.documents.length; i++) {
                 if (this.state.concept == this.state.documents[i]["concept"]) {
                     var id = this.state.documents[i]["id"];
