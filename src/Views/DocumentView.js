@@ -1,27 +1,30 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
+
 import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
-import TextComponent from '../Components/textComponent';
 import Video from '../Components/Video';
-import Container from '@material-ui/core/Container';
 import CodeComponent from '../Components/CodeComponent';
-import Button from '@material-ui/core/Button';
 import styles from '../mystyle.module.css';
 import SimpleDocRest from "../api/SimpleDocRest";
+import TextComponent from '../Components/textComponent';
 
 class DocumentView extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = { docTitle: "", docId: "", docDescription: "", consid: 1, docAuthor: "", docDate: "", videos: [], codes: [], docDefinition: "", };
+        this.state = {
+            docTitle: "", docId: this.props.match.params.id, docDescription: "", consid: 1, docAuthor: "", docDate: "", videos: [], codes: [], docDefinition: "",
+        };
     }
     toQuiz = async (e) => {
         this.props.history.push('/quiz')
     }
 
     fetchDoc = async () => {
-        SimpleDocRest.get(`/documents/1/`)
+        SimpleDocRest.get(`/documents/` + this.state.docId + `/`)
             .then((result) => {
                 this.setState({
                     docTitle: result.data.title,
@@ -49,6 +52,7 @@ class DocumentView extends React.Component {
         const { docTitle, docId, docDescription, docAuthor, docDate, videos, codes, docDefinition } = this.state;
         return (
             <div>
+
 		        <Header />
                 <NavBar />
                 {/* place holder */}
@@ -62,11 +66,11 @@ class DocumentView extends React.Component {
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
-                    <TextComponent className={styles.paragraph} text={docDefinition} />
+                    <TextComponent className={styles.paragraph} text={docDefinition.replace("\r", "\n")} />
                     <h2>
                         Description
                 </h2>
-                    <TextComponent text={docDescription} />
+                    <TextComponent text={docDescription.replace("\r", "\n")} />
                     <Container maxWidth="md">
                         {videos.map(({ url, title }) => (
                             <Video
@@ -105,7 +109,7 @@ class DocumentView extends React.Component {
 
 }
 
-export default DocumentView
+export default withRouter(DocumentView)
 
 
 

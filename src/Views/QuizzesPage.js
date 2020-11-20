@@ -2,24 +2,51 @@ import React from 'react';
 import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
 import Container from '@material-ui/core/Container';
-import CodeComponent from '../Components/CodeComponent';
+import { withRouter } from 'react-router-dom';
+
 import styles from '../mystyle.module.css';
 import SimpleDocRest from "../api/SimpleDocRest";
+import QuizCard from '../Components/QuizCard';
+
 
 class QuizzesPage extends React.Component {
+    constructor(props) {     //props = arguments, states = attributes
+        super(props);
+        this.state = { quizzes: [] };
+    }
 
+    fetchQuiz = async () => {
+        SimpleDocRest.get(`/quizzes/`)
+            .then((result) => {
+                this.setState({
+                    quizzes: result.data,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
+    componentDidMount() {
+        this.fetchQuiz();
+    }
 
     render() {
+        const { quizzes } = this.state;
+        console.log(quizzes)
+
         return (
             <div>
-		<Header />
+                <Header />
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
-
-
-</Container>
+                    <h1 className={styles.header}>
+                    </h1>
+                    {quizzes.map(({ title, id }) => (  //need to map ids
+                        <QuizCard title={title} id={id} />
+                    ))}
+                </Container>
             </div>
 
 
@@ -28,7 +55,7 @@ class QuizzesPage extends React.Component {
 
 }
 
-export default QuizzesPage
+export default withRouter(QuizzesPage)
 
 
 

@@ -7,6 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
 import ListSubheader from '@material-ui/core/ListSubheader';
+import AlertDialog from "./AlertDialog";
 
 
 
@@ -43,6 +44,13 @@ class ContributionForm extends React.Component {
             data: result.data
           };
         });
+        for (const concept of this.state.data) {
+          if (concept.category == "CSC108") {
+            this.setState((state) => ( { list108: [...state.list108, concept] } ))
+          } else {
+            this.setState((state) => ( { list148: [...state.list148, concept] } ))
+          }
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -125,20 +133,13 @@ class ContributionForm extends React.Component {
       example3: this.state.example3
     })
       .then(function (response) {
-        console.log(response);
+	alert("Your submission has successfully been submitted! Thank you!")
       }).then(function (error) {
         console.log(error);
       });
   };
 
   render() {
-    for (const concept of this.state.data) {
-      if (concept.category == "CSC108") {
-        this.state.list108.push(concept)
-      } else {
-        this.state.list148.push(concept)
-      }
-    }
     return (
       // , marginInlineStart: "33.5ch"  , marginInlineStart: "50ch" ,width: 80ch
       <div>
@@ -268,7 +269,7 @@ class ContributionForm extends React.Component {
               multiline
               value={this.state.documentname}
               onChange={this.handleOnDocNameChange.bind(this)}
-              placeholder="Enter the Documentation Name"
+              placeholder="Please enter a title for this piece of documentation"
               variant="filled"
             />
           </div>
@@ -282,7 +283,7 @@ class ContributionForm extends React.Component {
               value={this.state.definition}
               onChange={this.handleOnDefChange.bind(this)}
               rows={6}
-              placeholder="Enter the definition"
+              placeholder="Please enter definitions required for this topic"
               variant="filled"
             />
           </div>
@@ -296,12 +297,12 @@ class ContributionForm extends React.Component {
               value={this.state.description}
               onChange={this.handleOnDescriptionChange.bind(this)}
               rows={6}
-              placeholder="Enter the description"
+              placeholder="Please explain the concept in a way that can be easily understood by first year students"
               variant="filled"
             />
           </div>
           <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Examples
+            Code Examples
                   </h2>
           <div>
             <TextField
@@ -389,15 +390,17 @@ class ContributionForm extends React.Component {
             />
           </div>
 
-          <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
-        </form>
+        <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
+	</form>
       </div >
       //  marginLeft: "50ch", 
     );
   }
 
 }
+         // <AlertDialog />
 
+// <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
 
 ContributionForm.propTypes = {
 
