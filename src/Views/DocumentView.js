@@ -53,7 +53,7 @@ class DocumentView extends React.Component {
         return (
             <div>
 
-		        <Header />
+                <Header />
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
@@ -66,11 +66,11 @@ class DocumentView extends React.Component {
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
-                    <TextComponent className={styles.paragraph} text={docDefinition.replace("\r", "\n")} />
+                    <TextComponent className={styles.paragraph} text={docDefinition} />
                     <h2>
                         Description
                 </h2>
-                    <TextComponent text={docDescription.replace("\r", "\n")} />
+                    <TextComponent text={docDescription} />
                     <Container maxWidth="md">
                         {videos.map(({ url, title }) => (
                             <Video
