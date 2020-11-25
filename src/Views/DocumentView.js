@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Header from '../Components/Header';
 import NavBar from '../Components/NavBar';
@@ -60,9 +60,12 @@ class DocumentView extends React.Component {
                     <h1 className={styles.header}>
                         {docTitle}
                     </h1>
-                    <h6 className={styles.created}>
+		    <h6 className={styles.created}>
                         by {docAuthor}
                     </h6>
+		    <h5>
+			Please take a few seconds after reading the doc to give us feedback at our <Link to="/quiz/1"> Feedback Form</Link> NOTE: By submitting, you are giving consent to use your responses in future research work. If you have any questions about the project or your rights as a participant please submit a query to the contact page
+		    </h5>
                     <h2 className={styles.subheader}>
                         Definition
                 </h2>
