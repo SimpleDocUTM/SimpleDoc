@@ -21,7 +21,7 @@ class MultipleChoiceQuestion extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        SimpleDocRest.patch(`/quizzes/save-answer/`, {
+        SimpleDocRest.post(`/quizzes/save-answer/`, {
             question: this.props.questionId,
             option: this.state.selected,
         })
