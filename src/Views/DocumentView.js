@@ -45,6 +45,7 @@ class DocumentView extends React.Component {
     };
     componentDidMount() {
         this.fetchDoc();
+
     }
 
 
