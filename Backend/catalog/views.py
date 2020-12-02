@@ -3,7 +3,7 @@ from django.utils import timezone
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
 
-from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, User, SuggestedDocumentation
+from .models import Quiz, QuizOption, QuizQuestion, QuizOptionSubmission, Documentation, DocumentationContribution, Concept, Category, User, SuggestedDocumentation
 from .serializers import QuizListSerializer, QuizOptionSerializer, QuizQuestionSerializer, QuizDetailSerializer, QuizOptionSubmissionSerializer, UserSerializer, DocumentationListSerializer, DocumentationSerializer, DocumentationContributionSerializer, ConceptListSerializer, SuggestedDocumentationSerializer
 
 
@@ -74,6 +74,20 @@ class UserInfoAPI(generics.RetrieveAPIView):
 class DocumentationListAPI(generics.ListAPIView):
     queryset = Documentation.objects.all()
     serializer_class = DocumentationListSerializer
+
+
+class DocumentationListByCategoryAPI(generics.ListAPIView):
+    serializer_class = DocumentationListSerializer
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        # Uppercase the category name as that's how it's accepted in the api.
+        category_name = self.kwargs['category_name'].upper()
+        category = get_object_or_404(Category, name=category_name)
+        return Documentation.objects.filter(concept__category=category)
 
 
 class DocumentationContributeAPI(generics.CreateAPIView):

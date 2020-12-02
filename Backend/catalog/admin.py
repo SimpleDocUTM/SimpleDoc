@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, DocumentationContribution, DocumentationExample, DocumentationVideo, Concept, User, SuggestedDocumentation
+from .models import Quiz, QuizQuestion, QuizOption, QuizOptionSubmission, Documentation, DocumentationContribution, DocumentationExample, DocumentationVideo, Concept, Category, User, SuggestedDocumentation
 
 
 class MyUserAdmin(UserAdmin):
@@ -25,4 +25,5 @@ admin.site.register(DocumentationContribution)
 admin.site.register(DocumentationExample)
 admin.site.register(DocumentationVideo)
 admin.site.register(Concept)
+admin.site.register(Category)
 admin.site.register(SuggestedDocumentation)
