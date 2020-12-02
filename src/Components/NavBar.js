@@ -15,7 +15,8 @@ import ConceptsButton from '../Components/Buttons/ConceptsButton';
 
 const mystyles = {
   color: "#121212",
-  backgroundColor: "#FFFFF",
+  //backgroundColor: "#FFFFF",
+  backgroundColor: "#629BDC",
 
 };
 
@@ -26,7 +27,7 @@ export default function NavBar() {
   return (
     //<div style={mystyles} className={classes.root}>
     <div style={mystyles}>
-      <AppBar position="static">
+      <AppBar position="static" style={mystyles}>
         <Toolbar>
           {/* <HomeButton /> */}
           <ConceptsButton />
