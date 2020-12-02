@@ -1,9 +1,9 @@
 import axios from "axios";
 
-import { LOCAL_API_URL } from "../constants";
+import { API_URL } from "../constants";
 
 var SimpleDocRest = axios.create({
-    baseURL: LOCAL_API_URL,
+    baseURL: API_URL,
     headers: {
         "Content-Type": "application/json",
     }
