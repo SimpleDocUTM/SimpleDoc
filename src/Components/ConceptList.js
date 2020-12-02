@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import SimpleDocRest from "../api/SimpleDocRest";
-import { List, ListItem, ListItemText, ListSubheader } from '@material-ui/core/';
+import { List, ListItem, ListItemText, ListSubheader, Typography } from '@material-ui/core/';
 import DocumentList from './DocumentList'
+import "./list.css";
 
 export class ConceptList extends Component {
 
@@ -18,24 +19,19 @@ export class ConceptList extends Component {
             this.setState({
                 concepts: res.data
             })
-            const ListItemStyle = {
-                padding: "5px",
-                margin: "120px 50px",
-                maxWidth: "100px",
-                float: "left"
-            }
             var conceptList = [];
             for (var i = 0; i < this.state.concepts.length; i++) {
                 if (this.state.concepts[i].category == this.props.category) {
-                    conceptList.push(<ListItem button key={i}>
-                        <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
-                        <DocumentList concept={this.state.concepts[i]["id"]} />
-                    </ListItem>);
+                    conceptList.push(
+                        <div className="conceptList"><ListItem button key={i}>
+                            <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} />
+                            <DocumentList concept={this.state.concepts[i]["id"]} />
+                        </ListItem></div>);
                 } else if (this.props.category == 'general' || !this.props.category) {
-                    conceptList.push(<ListItem button key={i}>
-                        <ListItemText style={ListItemStyle} primary={this.state.concepts[i]["name"]} />
+                    conceptList.push(<div className="conceptList"><ListItem button key={i}>
+                        <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} />
                         <DocumentList concept={this.state.concepts[i]["id"]} />
-                    </ListItem>);
+                    </ListItem></div>);
                 }
             }
             this.setState({
@@ -48,7 +44,7 @@ export class ConceptList extends Component {
 
 
         return (
-            <div>
+            <div className="listContainer">
                 <List
                     component="nav"
                     aria-labelledby="nested-list-subheader"

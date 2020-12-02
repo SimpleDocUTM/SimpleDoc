@@ -20,7 +20,6 @@ class Concept extends React.Component {
             <div>
                 <Header />
                 <ButtonAppBar />
-                <h1>Concepts</h1>
                 {list}
             </div>
         );
