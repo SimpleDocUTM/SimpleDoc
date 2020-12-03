@@ -23,15 +23,22 @@ export class ConceptList extends Component {
             for (var i = 0; i < this.state.concepts.length; i++) {
                 if (this.state.concepts[i].category == this.props.category) {
                     conceptList.push(
-                        <div className="conceptList"><ListItem button key={i}>
-                            <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} />
+                        <div className="conceptList">
+                            {/* <ListItem button key={i}> */}
+                            {/* <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} /> */}
+                            {/* </ListItem> */}
+                            <li>{this.state.concepts[i]["name"]}</li>
                             <DocumentList concept={this.state.concepts[i]["id"]} />
-                        </ListItem></div>);
+
+                        </div>);
                 } else if (this.props.category == 'general' || !this.props.category) {
-                    conceptList.push(<div className="conceptList"><ListItem button key={i}>
+                    conceptList.push(<div className="conceptList">
+                        {/* <ListItem button key={i}>
                         <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} />
+                    </ListItem> */}
+                        <li>{this.state.concepts[i]["name"]}</li>
                         <DocumentList concept={this.state.concepts[i]["id"]} />
-                    </ListItem></div>);
+                    </div>);
                 }
             }
             this.setState({
