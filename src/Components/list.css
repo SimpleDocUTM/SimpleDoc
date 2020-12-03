@@ -1,7 +1,11 @@
 .primary{
+<<<<<<< HEAD
     color: black;
+=======
+    color: #004E89;
+    /* color: lightblue; */
+>>>>>>> 35b68fa7340e5fdb5e92eec8f527d1a3f08b569d
     margin: 0px 10px;
-    text-decoration: none;
 }
 
 .secondary{
@@ -10,35 +14,62 @@
     margin: 0px 10px;
 }
 
-.listItem{
-    padding: 5px;
-    margin: 120px 50px;
-    max-width: 500px;
-    color: white;
+a{
+    text-decoration: none;
 }
 
+<<<<<<< HEAD
 .list{
     
     border: black outset 0.5px;
+=======
+.listItem{    
+    /* border: #004E89 outset 0.5px;
+>>>>>>> 35b68fa7340e5fdb5e92eec8f527d1a3f08b569d
     border-top: 0px;
     border-left: 0px;
     box-shadow: black50 4px 4px;
     color: white;
     border-radius: 5px;
     margin: 30px 0px;
-    max-width: auto;
+    max-width: auto; */
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+    color: rgba(0, 0, 0, 0.87);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #fff;
+    flex-grow: 1;
 }
 
-.list:hover{
+.listItem:hover{
     background: rgb(221, 223, 235);
 }
+
+li{
+    font-size: 25px;
+    /* padding: 20px; */
+    margin: 10px;
+    text-decoration: underline;
+    text-decoration-color: rgb(155, 155, 155);
+    color: #004E89;
+}
+
+@media (max-width: 700px){
+    class.listItem{
+        display: none;
+    }
+}
+
 .conceptList{
-    border-bottom: black groove 2px;
+    border-bottom: #004E89 groove 2px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
 }
 
 .listContainer{
     padding: 0px 10px;
-    background: rgb(153, 163, 245, 0.1);
+    /* background: rgb(153, 163, 245, 0.1); */
+    background: #ededed;
     margin: 0px;
 }
 
