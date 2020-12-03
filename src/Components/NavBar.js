@@ -17,6 +17,8 @@ const mystyles = {
   color: "#121212",
   //backgroundColor: "#FFFFF",
   backgroundColor: "#629BDC",
+  textAlign: "center",
+
 
 };
 
