@@ -1,15 +1,13 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
-import ListSubheader from '@material-ui/core/ListSubheader';
+import ListSubheader from "@material-ui/core/ListSubheader";
 import AlertDialog from "./AlertDialog";
-
-
 
 class ContributionForm extends React.Component {
   constructor(props) {
@@ -19,21 +17,21 @@ class ContributionForm extends React.Component {
       data: [],
       list108: [],
       list148: [],
-      conceptname: '',
-      documentname: '',
-      definition: '',
-      description: '',
-      contributorName: '',
-      contributorUtorid: '',
-      contributorStdNum: '',
-      contributorEmail: '',
-      exampleDescription1: '',
-      example1: '',
-      exampleDescription2: '',
-      example2: '',
-      exampleDescription3: '',
-      example3: '',
-    }
+      conceptname: "",
+      documentname: "",
+      definition: "",
+      description: "",
+      contributorName: "",
+      contributorUtorid: "",
+      contributorStdNum: "",
+      contributorEmail: "",
+      exampleDescription1: "",
+      example1: "",
+      exampleDescription2: "",
+      example2: "",
+      exampleDescription3: "",
+      example3: "",
+    };
   }
 
   componentDidMount() {
@@ -41,14 +39,18 @@ class ContributionForm extends React.Component {
       .then((result) => {
         this.setState(() => {
           return {
-            data: result.data
+            data: result.data,
           };
         });
         for (const concept of this.state.data) {
           if (concept.category == "CSC108") {
-            this.setState((state) => ( { list108: [...state.list108, concept] } ))
+            this.setState((state) => ({
+              list108: [...state.list108, concept],
+            }));
           } else {
-            this.setState((state) => ( { list148: [...state.list148, concept] } ))
+            this.setState((state) => ({
+              list148: [...state.list148, concept],
+            }));
           }
         }
       })
@@ -67,7 +69,7 @@ class ContributionForm extends React.Component {
 
   handleOnDefChange(event) {
     this.setState({ definition: event.target.value });
-  };
+  }
 
   handleOnDescriptionChange = (event) => {
     this.setState({ description: event.target.value });
@@ -130,26 +132,35 @@ class ContributionForm extends React.Component {
       exampleDescription3: this.state.exampleDescription3,
       example1: this.state.example1,
       example2: this.state.example2,
-      example3: this.state.example3
+      example3: this.state.example3,
     })
       .then(function (response) {
-	alert("Your submission has successfully been submitted! Thank you!")
-      }).then(function (error) {
+        alert("Your submission has successfully been submitted! Thank you!");
+      })
+      .then(function (error) {
         console.log(error);
       });
-  };
+  }
 
   render() {
     return (
       // , marginInlineStart: "33.5ch"  , marginInlineStart: "50ch" ,width: 80ch
       <div>
-        <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
+        <form
+          noValidate
+          autoComplete="off"
+          onSubmit={this.handleOnSubmit.bind(this)}
+        >
           <h2 style={{ marginTop: "30px", marginInlineStart: "3ch" }}>
             Personal Information
-                    </h2>
+          </h2>
           <div>
             <TextField //name
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "5px",
+                marginInlineStart: "3ch",
+              }}
               id="name"
               required
               label="Name"
@@ -160,7 +171,7 @@ class ContributionForm extends React.Component {
               variant="filled"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" >
+                  <InputAdornment position="start">
                     <AccountCircle style={{ marginBottom: "14px" }} />
                   </InputAdornment>
                 ),
@@ -169,7 +180,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField //Utorid
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Utorid"
@@ -180,7 +195,7 @@ class ContributionForm extends React.Component {
               variant="filled"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" >
+                  <InputAdornment position="start">
                     <AccountCircle style={{ marginBottom: "14px" }} />
                   </InputAdornment>
                 ),
@@ -189,7 +204,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Student Number"
@@ -200,7 +219,7 @@ class ContributionForm extends React.Component {
               variant="filled"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" >
+                  <InputAdornment position="start">
                     <AccountCircle style={{ marginBottom: "14px" }} />
                   </InputAdornment>
                 ),
@@ -209,7 +228,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="UofT Email"
@@ -220,7 +243,7 @@ class ContributionForm extends React.Component {
               variant="filled"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start" >
+                  <InputAdornment position="start">
                     <AccountCircle style={{ marginBottom: "14px" }} />
                   </InputAdornment>
                 ),
@@ -229,7 +252,7 @@ class ContributionForm extends React.Component {
           </div>
           <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
             Create the Documentation
-                  </h2>
+          </h2>
           <div>
             <TextField
               style={{ width: "40ch", marginInlineStart: "3ch" }}
@@ -239,7 +262,6 @@ class ContributionForm extends React.Component {
               select
               onChange={this.handleOnConceptChange.bind(this)}
               value={this.state.conceptname}
-
               helperText="Please select one concept"
             >
               <MenuItem value="">
@@ -250,7 +272,6 @@ class ContributionForm extends React.Component {
                 <MenuItem key={concept.name} value={concept.name}>
                   {concept.name}
                 </MenuItem>
-
               ))}
               <ListSubheader>CSC148</ListSubheader>
               {this.state.list148.map((concept) => (
@@ -262,7 +283,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               //id="filled-multiline-static"
               required
               label="Documentation Name"
@@ -275,7 +300,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Documentation Definition"
@@ -289,7 +318,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Documentation Description"
@@ -303,10 +336,14 @@ class ContributionForm extends React.Component {
           </div>
           <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
             Code Examples
-                  </h2>
+          </h2>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "5px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Example1 Description"
@@ -320,7 +357,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Example1"
@@ -335,7 +376,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "40px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Example2 Description"
@@ -349,7 +394,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               required
               label="Example2"
@@ -364,7 +413,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "40px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               label="Example3 Description"
               multiline
@@ -377,7 +430,11 @@ class ContributionForm extends React.Component {
           </div>
           <div>
             <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
+              style={{
+                width: "40ch",
+                marginTop: "20px",
+                marginInlineStart: "3ch",
+              }}
               id="filled-multiline-static"
               label="Example3"
               multiline
@@ -390,20 +447,25 @@ class ContributionForm extends React.Component {
             />
           </div>
 
-        <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
-	</form>
-      </div >
-      //  marginLeft: "50ch", 
+          <Button
+            style={{ marginTop: "30px", marginLeft: "3ch" }}
+            variant="contained"
+            color="primary"
+            type="submit"
+          >
+            Submit
+          </Button>
+        </form>
+      </div>
+      //  marginLeft: "50ch",
     );
   }
-
 }
-         // <AlertDialog />
+// <AlertDialog />
 
 // <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
 
 ContributionForm.propTypes = {
-
   conceptname: PropTypes.string,
   documentname: PropTypes.string,
   definition: PropTypes.string,
@@ -420,4 +482,4 @@ ContributionForm.propTypes = {
   example3: PropTypes.string,
 };
 
-export default ContributionForm
+export default ContributionForm;
