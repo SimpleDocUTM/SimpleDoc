@@ -1,5 +1,6 @@
 .primary{
     color: #004E89;
+    /* color: lightblue; */
     margin: 0px 10px;
 }
 
@@ -57,7 +58,8 @@ li{
 
 .listContainer{
     padding: 0px 10px;
-    background: rgb(153, 163, 245, 0.1);
+    /* background: rgb(153, 163, 245, 0.1); */
+    background: #ededed;
     margin: 0px;
 }
 
