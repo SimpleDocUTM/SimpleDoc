@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-
+import '../../mystyle.module.css';
 class Contribute extends React.Component {
     state = {
         redirect: false
@@ -20,9 +20,11 @@ class Contribute extends React.Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <Button style={{ margin: "20px" }} onClick={this.setRedirect}>Contribute</Button>
+                <Button onClick={this.setRedirect} className="navbar-button">Contribute</Button>
+
             </div>
         )
     }
 }
 export default Contribute
+//<Button style={{ margin: "20px" }} onClick={this.setRedirect} >Contribute</Button>

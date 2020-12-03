@@ -1,6 +1,8 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import '../../mystyle.module.css';
+
 
 class LoginButton extends React.Component {
     state = {
@@ -20,9 +22,10 @@ class LoginButton extends React.Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <Button style={{ margin: "20px" }} variant="outlined" onClick={this.setRedirect}>Login</Button>
+                <Button className="navbar-button" variant="outlined" onClick={this.setRedirect}>Login</Button>
             </div>
         )
     }
 }
 export default LoginButton
+//<Button style={{ margin: "20px" }} variant="outlined" onClick={this.setRedirect}>Login</Button>

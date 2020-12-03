@@ -1,6 +1,8 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import '../../mystyle.module.css';
+
 
 class CreatePage extends React.Component {
     state = {
@@ -20,9 +22,10 @@ class CreatePage extends React.Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <Button style={{ margin: "20px" }} color="primary" onClick={this.setRedirect}>Create a new page</Button>
+                <Button className="button" onClick={this.setRedirect}>Create a new page</Button>
             </div>
         )
     }
 }
 export default Contribute
+//<Button style={{ margin: "20px" }} color="primary" onClick={this.setRedirect}>Create a new page</Button>

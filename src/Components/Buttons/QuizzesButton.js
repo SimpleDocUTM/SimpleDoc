@@ -1,6 +1,8 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import '../../mystyle.module.css';
+
 
 class QuizzesButton extends React.Component {
     state = {
@@ -20,9 +22,10 @@ class QuizzesButton extends React.Component {
         return (
             <div>
                 {this.renderRedirect()}
-                <Button style={{ margin: "20px" }} onClick={this.setRedirect}>Quizzes</Button>
+                <Button className="navbar-button" onClick={this.setRedirect}>Quizzes</Button>
             </div>
         )
     }
 }
 export default QuizzesButton
+//<Button style={{ margin: "20px" }} onClick={this.setRedirect}>Quizzes</Button>

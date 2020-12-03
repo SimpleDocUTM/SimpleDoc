@@ -12,7 +12,7 @@ import HomeButton from '../Components/Buttons/HomeButton';
 import HelpButton from '../Components/Buttons/HelpButton';
 import ConceptsButton from '../Components/Buttons/ConceptsButton';
 import Search from "../Components/Search";
-//import '../mystyle.module.css';
+import '../mystyle.module.css';
 
 const mystyles = {
   color: "#121212",
@@ -30,7 +30,7 @@ export default function NavBar() {
   return (
     //<div style={mystyles} className={classes.root}>
     <div style={mystyles}>
-      <AppBar position="static" style={mystyles}>
+      <AppBar position="static" className="navbar">
         <Toolbar>
           {/* <HomeButton /> */}
           <ConceptsButton />
