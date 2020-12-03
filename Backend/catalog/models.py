@@ -33,10 +33,22 @@ class QuizOption(models.Model):
         return self.text
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, force_insert=False, force_update=False):
+        # Uppercase the name on save.
+        self.name = self.name.upper()
+        super(Category, self).save(force_insert, force_update)
+
+
 class Concept(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     name = models.TextField()
-    category = models.TextField() #CSC108 or CSC148
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['created']
