@@ -8,7 +8,7 @@ urlpatterns = [
     # path('quizzes/submit/', QuizSubmissionAPI.as_view()),
     path('user/<pk>/', UserInfoAPI.as_view()),
     path('documents/', DocumentationListAPI.as_view()),
-    path('documents/<str:category_name>/',
+    path('documents/category/<str:category_name>/',
          DocumentationListByCategoryAPI.as_view()),
     path('documents/<int:pk>/', DocumentationAPI.as_view()),
     path('documents/contribution/', DocumentationContributeAPI.as_view()),
