@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
 import ListSubheader from '@material-ui/core/ListSubheader';
 import AlertDialog from "./AlertDialog";
+import Container from '@material-ui/core/Container';
 
 
 
@@ -46,9 +47,9 @@ class ContributionForm extends React.Component {
         });
         for (const concept of this.state.data) {
           if (concept.category == "CSC108") {
-            this.setState((state) => ( { list108: [...state.list108, concept] } ))
+            this.setState((state) => ({ list108: [...state.list108, concept] }))
           } else {
-            this.setState((state) => ( { list148: [...state.list148, concept] } ))
+            this.setState((state) => ({ list148: [...state.list148, concept] }))
           }
         }
       })
@@ -133,7 +134,7 @@ class ContributionForm extends React.Component {
       example3: this.state.example3
     })
       .then(function (response) {
-	alert("Your submission has successfully been submitted! Thank you!")
+        alert("Your submission has successfully been submitted! Thank you!")
       }).then(function (error) {
         console.log(error);
       });
@@ -143,262 +144,264 @@ class ContributionForm extends React.Component {
     return (
       // , marginInlineStart: "33.5ch"  , marginInlineStart: "50ch" ,width: 80ch
       <div>
-        <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
-          <h2 style={{ marginTop: "30px", marginInlineStart: "3ch" }}>
-            Personal Information
+        <Container maxWidth="sm">
+          <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
+            <h2 style={{ marginTop: "30px", marginInlineStart: "2ch" }}>
+              Personal Information
                     </h2>
-          <div>
-            <TextField //name
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
-              id="name"
-              required
-              label="Name"
-              multiline
-              value={this.state.contributorName}
-              onChange={this.handleOnContributorNameChange.bind(this)}
-              //placeholder="Enter your name"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField //Utorid
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Utorid"
-              multiline
-              value={this.state.contributorUtorid}
-              onChange={this.handleOnContributorUtoridChange.bind(this)}
-              //placeholder="Enter your Utorid"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Student Number"
-              multiline
-              value={this.state.contributorStdNum}
-              onChange={this.handleOnContributorStdNumChange.bind(this)}
-              //placeholder="Enter your student number"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="UofT Email"
-              multiline
-              value={this.state.contributorEmail}
-              onChange={this.handleOnContributorEmailChange.bind(this)}
-              //placeholder="Enter your email (UofT email preferred)"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Create the Documentation
+            <div>
+              <TextField //name
+                style={{ width: "50ch", marginTop: "5px", marginInlineStart: "3ch" }}
+                id="name"
+                required
+                label="Name"
+                multiline
+                value={this.state.contributorName}
+                onChange={this.handleOnContributorNameChange.bind(this)}
+                //placeholder="Enter your name"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField //Utorid
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Utorid"
+                multiline
+                value={this.state.contributorUtorid}
+                onChange={this.handleOnContributorUtoridChange.bind(this)}
+                //placeholder="Enter your Utorid"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Student Number"
+                multiline
+                value={this.state.contributorStdNum}
+                onChange={this.handleOnContributorStdNumChange.bind(this)}
+                //placeholder="Enter your student number"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="UofT Email"
+                multiline
+                value={this.state.contributorEmail}
+                onChange={this.handleOnContributorEmailChange.bind(this)}
+                //placeholder="Enter your email (UofT email preferred)"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <h2 style={{ marginTop: "40px", marginInlineStart: "2ch" }}>
+              Create the Documentation
                   </h2>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Concept Name"
-              select
-              onChange={this.handleOnConceptChange.bind(this)}
-              value={this.state.conceptname}
+            <div>
+              <TextField
+                style={{ width: "50ch", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Concept Name"
+                select
+                onChange={this.handleOnConceptChange.bind(this)}
+                value={this.state.conceptname}
 
-              helperText="Please select one concept"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <ListSubheader>CSC108</ListSubheader>
-              {this.state.list108.map((concept) => (
-                <MenuItem key={concept.name} value={concept.name}>
-                  {concept.name}
+                helperText="Please select one concept"
+              >
+                <MenuItem value="">
+                  <em>None</em>
                 </MenuItem>
+                <ListSubheader>CSC108</ListSubheader>
+                {this.state.list108.map((concept) => (
+                  <MenuItem key={concept.name} value={concept.name}>
+                    {concept.name}
+                  </MenuItem>
 
-              ))}
-              <ListSubheader>CSC148</ListSubheader>
-              {this.state.list148.map((concept) => (
-                <MenuItem key={concept.name} value={concept.name}>
-                  {concept.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              //id="filled-multiline-static"
-              required
-              label="Documentation Name"
-              multiline
-              value={this.state.documentname}
-              onChange={this.handleOnDocNameChange.bind(this)}
-              placeholder="Please enter a title for this piece of documentation"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Documentation Definition"
-              multiline
-              value={this.state.definition}
-              onChange={this.handleOnDefChange.bind(this)}
-              rows={6}
-              placeholder="Please enter definitions required for this topic"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Documentation Description"
-              multiline
-              value={this.state.description}
-              onChange={this.handleOnDescriptionChange.bind(this)}
-              rows={6}
-              placeholder="Please explain the concept in a way that can be easily understood by first year students"
-              variant="filled"
-            />
-          </div>
-          <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Code Examples
+                ))}
+                <ListSubheader>CSC148</ListSubheader>
+                {this.state.list148.map((concept) => (
+                  <MenuItem key={concept.name} value={concept.name}>
+                    {concept.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                //id="filled-multiline-static"
+                required
+                label="Documentation Name"
+                multiline
+                value={this.state.documentname}
+                onChange={this.handleOnDocNameChange.bind(this)}
+                placeholder="Please enter a title for this piece of documentation"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Documentation Definition"
+                multiline
+                value={this.state.definition}
+                onChange={this.handleOnDefChange.bind(this)}
+                rows={6}
+                placeholder="Please enter definitions required for this topic"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Documentation Description"
+                multiline
+                value={this.state.description}
+                onChange={this.handleOnDescriptionChange.bind(this)}
+                rows={6}
+                placeholder="Please explain the concept in a way that can be easily understood by first year students"
+                variant="filled"
+              />
+            </div>
+            <h2 style={{ marginTop: "40px", marginInlineStart: "2ch" }}>
+              Code Examples
                   </h2>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example1 Description"
-              multiline
-              value={this.state.exampleDescription1}
-              onChange={this.handleOnExDescription1.bind(this)}
-              rows={4}
-              placeholder="Please describe example one"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example1"
-              multiline
-              value={this.state.example1}
-              onChange={this.handleOnEx1.bind(this)}
-              rows={6}
-              placeholder="Enter example one"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example2 Description"
-              multiline
-              value={this.state.exampleDescription2}
-              onChange={this.handleOnExDescription2.bind(this)}
-              rows={4}
-              placeholder="Please describe example two"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example2"
-              multiline
-              value={this.state.example2}
-              onChange={this.handleOnEx2.bind(this)}
-              rows={6}
-              placeholder="Enter example two"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              label="Example3 Description"
-              multiline
-              value={this.state.exampleDescription3}
-              onChange={this.handleOnExDescription3.bind(this)}
-              rows={4}
-              placeholder="Please describe example three"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              label="Example3"
-              multiline
-              value={this.state.example3}
-              onChange={this.handleOnEx3.bind(this)}
-              rows={6}
-              placeholder="Enter example three"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "5px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Example1 Description"
+                multiline
+                value={this.state.exampleDescription1}
+                onChange={this.handleOnExDescription1.bind(this)}
+                rows={4}
+                placeholder="Please describe example one"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Example1"
+                multiline
+                value={this.state.example1}
+                onChange={this.handleOnEx1.bind(this)}
+                rows={6}
+                placeholder="Enter example one"
+                helperText="Please type in code snippet(with indentation)"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "40px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Example2 Description"
+                multiline
+                value={this.state.exampleDescription2}
+                onChange={this.handleOnExDescription2.bind(this)}
+                rows={4}
+                placeholder="Please describe example two"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                required
+                label="Example2"
+                multiline
+                value={this.state.example2}
+                onChange={this.handleOnEx2.bind(this)}
+                rows={6}
+                placeholder="Enter example two"
+                helperText="Please type in code snippet(with indentation)"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "40px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                label="Example3 Description"
+                multiline
+                value={this.state.exampleDescription3}
+                onChange={this.handleOnExDescription3.bind(this)}
+                rows={4}
+                placeholder="Please describe example three"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "50ch", marginTop: "20px", marginInlineStart: "3ch" }}
+                id="filled-multiline-static"
+                label="Example3"
+                multiline
+                value={this.state.example3}
+                onChange={this.handleOnEx3.bind(this)}
+                rows={6}
+                placeholder="Enter example three"
+                helperText="Please type in code snippet(with indentation)"
+                variant="filled"
+              />
+            </div>
 
-        <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
-	</form>
+            <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
+          </form>
+        </Container>
       </div >
       //  marginLeft: "50ch", 
     );
   }
 
 }
-         // <AlertDialog />
+// <AlertDialog />
 
 // <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
 
