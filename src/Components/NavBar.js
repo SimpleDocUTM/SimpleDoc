@@ -11,6 +11,7 @@ import QuizzesButton from '../Components/Buttons/QuizzesButton';
 import HomeButton from '../Components/Buttons/HomeButton';
 import HelpButton from '../Components/Buttons/HelpButton';
 import ConceptsButton from '../Components/Buttons/ConceptsButton';
+import Search from "../Components/Search";
 //import '../mystyle.module.css';
 
 const mystyles = {
@@ -33,6 +34,7 @@ export default function NavBar() {
           <QuizzesButton />
           <ContributeButton />
           <HelpButton />
+          <Search />
         </Toolbar>
       </AppBar>
     </div>
