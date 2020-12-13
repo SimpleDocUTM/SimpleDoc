@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import SimpleDocRest from "../api/SimpleDocRest";
+import "./list.css";
 import {
   List,
   ListItem,
   ListItemText,
   ListSubheader,
   CircularProgress,
+  Typography
 } from "@material-ui/core/";
 import DocumentList from "./DocumentList";
 import Loading from "./Loading";
@@ -21,47 +23,38 @@ export class ConceptList extends Component {
   }
 
   async componentDidMount() {
-    SimpleDocRest.get("concepts/").then((res) => {
+    SimpleDocRest.get('concepts/').then((res) => {
       this.setState({
-        concepts: res.data,
-      });
-      const ListItemStyle = {
-        padding: "5px",
-        margin: "120px 50px",
-        maxWidth: "100px",
-        float: "left",
-      };
+        concepts: res.data
+      })
       var conceptList = [];
       for (var i = 0; i < this.state.concepts.length; i++) {
         if (this.state.concepts[i].category == this.props.category) {
           conceptList.push(
-            <ListItem button key={i}>
-              <ListItemText
-                style={ListItemStyle}
-                primary={this.state.concepts[i]["name"]}
-              />
+            <div key={i} className="conceptList">
+              {/* <ListItem button key={i}> */}
+              {/* <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} /> */}
+              {/* </ListItem> */}
+              <li>{this.state.concepts[i]["name"]}</li>
               <DocumentList concept={this.state.concepts[i]["id"]} />
-            </ListItem>
-          );
-        } else if (this.props.category == "general" || !this.props.category) {
-          conceptList.push(
-            <ListItem button key={i}>
-              <ListItemText
-                style={ListItemStyle}
-                primary={this.state.concepts[i]["name"]}
-              />
-              <DocumentList concept={this.state.concepts[i]["id"]} />
-            </ListItem>
-          );
+
+            </div>);
+        } else if (this.props.category == 'general' || !this.props.category) {
+          conceptList.push(<div key={i} className="conceptList">
+            {/* <ListItem button key={i}>
+                        <ListItemText primary={<Typography variant="h5" className="conceptName">{this.state.concepts[i]["name"]}</Typography>} />
+                    </ListItem> */}
+            <li>{this.state.concepts[i]["name"]}</li>
+            <DocumentList concept={this.state.concepts[i]["id"]} />
+          </div>);
         }
       }
       this.setState({
         conceptList: conceptList,
-        isLoading: false,
+        isLoading: false
       });
-    });
+    })
   }
-
   render() {
     const { isLoading, conceptList } = this.state;
     return (

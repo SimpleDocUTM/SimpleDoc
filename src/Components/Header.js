@@ -7,21 +7,12 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import '../mystyle.module.css';
-
-const mystyle = {
-  color: "#121212",
-  backgroundColor: "#e5e5e5",
-  padding: "10px",
-  fontFamily: "Roboto",
-  textAlign: "center",
-  borderBottom: "2px groove #000000",
-  display: "flex",
-};
+import "./navigation.css"
 
 export default function Header() {
   return (
-    <div style={mystyle} >
-      <h1 style={{ flexGrow: "1" }}>Simple Doc</h1>
+    <div className={"head"} >
+      <h1 className={"title"}>Simple Doc</h1>
     </div >
   )
 }
