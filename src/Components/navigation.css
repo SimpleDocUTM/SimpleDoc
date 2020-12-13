@@ -1,0 +1,33 @@
+.navbar{
+    color: #121212;
+    background: #3e9cb6;
+    width: 100%;
+    text-align: center;
+    display: flex;
+}
+
+.button{
+    color: rgb(15, 105, 117);
+}
+
+.header{
+    color: #121212;
+    /* background-color: #e5e5e5; */
+    padding: "10px";
+    font-family: Roboto;
+    /* text-align: center; */
+    /* border-bottom: 2px groove #000000; */
+    display: flex;
+}
+
+.title{
+    flex:1;
+}
+
+.head{
+    padding: "10px";
+    font-family: Roboto;
+    background: linear-gradient(white 90%, rgb(15, 105, 117));
+    text-align: center;
+    display: flex;
+}

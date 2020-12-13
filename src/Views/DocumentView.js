@@ -2,7 +2,6 @@ import React from "react";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { Link, withRouter } from "react-router-dom";
-
 import Header from "../Components/Header";
 import NavBar from "../Components/NavBar";
 import Video from "../Components/Video";
@@ -11,6 +10,7 @@ import styles from "../mystyle.module.css";
 import SimpleDocRest from "../api/SimpleDocRest";
 import TextComponent from "../Components/textComponent";
 import Loading from "../Components/Loading";
+import './documentView.css';
 
 class DocumentView extends React.Component {
   constructor(props) {
@@ -75,51 +75,50 @@ class DocumentView extends React.Component {
         <Header />
         <NavBar />
         {/* place holder */}
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className={"documentView"}>
           {isLoading ? (
             <Loading />
           ) : (
-            <div>
-              <h1 className={styles.header}>{docTitle}</h1>
-              <h6 className={styles.created}>by {docAuthor}</h6>
-              <h5>
-                Please take a few seconds after reading the doc to give us
+              <div>
+                <h1 className={"header"}>{docTitle}</h1>
+                <hr></hr>
+                <h6 className={"author"}>by {docAuthor}</h6>
+                <h5 className="desc">
+                  Please take a few seconds after reading the doc to give us
                 feedback at our <Link to="/quiz/1"> Feedback Form</Link> NOTE:
                 By submitting, you are giving consent to use your responses in
-                future research work. If you have any questions about the
-                project or your rights as a participant please submit a query to
-                the contact page
+                future research work.
               </h5>
-              <h2 className={styles.subheader}>Definition</h2>
-              <TextComponent
-                className={styles.paragraph}
-                text={docDefinition}
-              />
-              <h2>Description</h2>
-              <TextComponent text={docDescription} />
-              <Container maxWidth="md">
-                {videos.map(({ url, title }) => (
-                  <Video id={url} title={title} />
-                ))}
-              </Container>
+                <h2>Definition</h2>
+                <TextComponent
+                  className={styles.paragraph}
+                  text={docDefinition}
+                />
+                <h2>Description</h2>
+                <TextComponent text={docDescription} />
+                <Container maxWidth="md">
+                  {videos.map(({ url, title }) => (
+                    <Video id={url} title={title} />
+                  ))}
+                </Container>
 
-              <h2>Code Examples</h2>
-              {codes.map(({ description, code }) => (
-                <div>
-                  <h3>{description}</h3>
-                  <CodeComponent
-                    code={code.replace("\\n", "\n")}
-                    language="language-python"
-                  />
-                </div>
-              ))}
-              <Button variant="contained" color="primary" onClick={this.toQuiz}>
-                Take a Quiz
+                <h2>Code Examples</h2>
+                {codes.map(({ description, code }) => (
+                  <div>
+                    <h3>{description}</h3>
+                    <CodeComponent
+                      code={code.replace("\\n", "\n")}
+                      language="language-python"
+                    />
+                  </div>
+                ))}
+                <Button variant="contained" color="primary" onClick={this.toQuiz}>
+                  Take a Quiz
               </Button>
-            </div>
-          )}
+              </div>
+            )}
         </Container>
-      </div>
+      </div >
     );
   }
 }

@@ -30,7 +30,7 @@ export class DocumentList extends Component {
         if (this.state.concept == this.state.documents[i]["concept"]) {
           var id = this.state.documents[i]["id"];
           var l = `/DocumentView/${id}`;
-          listItems.push(<Link classes={{ root: "link" }} to={l} > <div className="listItem"><ListItem button key={i} >
+          listItems.push(<Link key={i} classes={{ root: "link" }} to={l} > <div className="listItem"><ListItem button key={i} >
             <ListItemText primary={<Typography variant="h5" className="primary">{this.state.documents[i]["title"]}</Typography>} secondary={<Typography variant="h6" className="secondary">{this.state.documents[i]["description"].slice(0, 100) + "..."}</Typography>} />
             <ListItemText classes={{ root: "primary" }} primary="Author" secondary={<Typography variant="h6" className="secondary">{this.state.documents[i]["contributor"]}</Typography>} />
           </ListItem ></div>
