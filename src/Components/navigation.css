@@ -1,6 +1,6 @@
 .navbar{
     color: #121212;
-    background: #3e9cb6;
+    background: #629BDC;
     text-align: center;
     display: flex;
 }
@@ -26,7 +26,11 @@
 .head{
     padding: "10px";
     font-family: Roboto;
-    background: linear-gradient(white 90%, rgb(15, 105, 117));
+    background: linear-gradient(white 90%, rgb((98,155,220)));
     text-align: center;
     display: flex;
+}
+
+.search{
+    margin-left: auto
 }
