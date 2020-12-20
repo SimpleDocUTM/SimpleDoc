@@ -35,7 +35,7 @@ export default function NavBar() {
           <QuizzesButton className={"button"} />
           <ContributeButton className={"button"} />
           <HelpButton className={"button"} />
-          <Search />
+          <Search className={"search"} />
         </Toolbar>
       </AppBar>
     </div>

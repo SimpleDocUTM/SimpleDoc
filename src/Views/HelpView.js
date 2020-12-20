@@ -16,7 +16,7 @@ class HelpView extends React.Component {
                 <NavBar />
                 {/* place holder */}
                 <Container maxWidth="lg">
-                    <h1 className={styles.header}>
+                    <h1 >
                         What is SimpleDoc?
                     </h1>
                     <TextComponent className={styles.paragraph} text='For many people, understanding expert created articles and documentation 
@@ -32,7 +32,7 @@ class HelpView extends React.Component {
                     {/* <h1 className={styles.header}> */}
                     {/* Frequently Asked Questions */}
                     {/* </h1> */}
-                    <h1 className={styles.header}>
+                    <h1 >
                         Contact Us
                     </h1>
                     <ContactForm />

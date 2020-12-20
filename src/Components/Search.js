@@ -3,6 +3,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import { Redirect, withRouter } from "react-router-dom";
 import SimpleDocRest from "../api/SimpleDocRest";
+import SearchIcon from '@material-ui/icons/Search';
+import InputBase from '@material-ui/core/InputBase';
 
 class Search extends React.Component {
     constructor(props) {
@@ -62,10 +64,10 @@ class Search extends React.Component {
                     getOptionLabel={option => option}
                     onChange={this.onTagsChange}
                     renderInput={params => (
-                        <TextField
+                        <TextField style={{ marginLeft: "auto" }}
                             {...params}
-                            variant="standard"
-                            label="Search ..."
+                            variant="outlined"
+                            label="Search"
                             fullWidth
                         />
                     )}

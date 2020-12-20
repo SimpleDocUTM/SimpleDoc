@@ -6,6 +6,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import TextField from '@material-ui/core/TextField';
 import emailjs from "emailjs-com"
 import Button from '@material-ui/core/Button';
+import './navigation.css'
+
 //import{ init } from 'emailjs-com';
 //init("user_f5FwnjehDRqmtbwbNaUVN");
 
@@ -50,7 +52,7 @@ export default function ContactForm() {
                 </div>
                 <p> </p>
                 <div className="col-8 pt-3 mx-auto">
-                    <Button variant="outlined" color="primary" input type="submit" className="btn btn-info" value="Send Message">Send Message</Button>
+                    <Button className={"button"} variant="outlined" color="primary" input type="submit" className="btn btn-info" value="Send Message">Send Message</Button>
                 </div>
                 <p> </p>
             </div>
