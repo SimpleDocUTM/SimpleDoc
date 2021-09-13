@@ -90,8 +90,8 @@ DATABASES = {
         'NAME': 'simpledoc',
         'USER': 'simpledoc',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': os.getenv("DB_NAME"),
+        'PORT': '5432',
     }
 }
 
