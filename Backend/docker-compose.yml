@@ -5,6 +5,7 @@ services:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data:z
+    restart: always
     environment:
       - POSTGRES_DB=simpledoc
       - POSTGRES_USER=simpledoc
@@ -12,6 +13,7 @@ services:
   backend:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    restart: always
     volumes:
       - .:/code
     ports:
