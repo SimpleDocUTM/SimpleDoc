@@ -42,3 +42,6 @@ pip-selfcheck.json
 !**/__pycache__/__init__.py
 /Backend/settings.py
 db.bak
+
+# Docker
+/Backend/data
